@@ -95,8 +95,8 @@ var = vars_info.copy()
 var.extend(vars_comp)
 
 
-''' começo da criação da base de dados a ser usada para ranking'''
-'''precisa diferenciar por liga'''
+
+
 
 @st.cache
 def gen_base2(base):
@@ -148,9 +148,6 @@ def base2_pos(base2, lista_pos_select):
     return base2
 
 base2 = base2_pos(base2, lista_pos_select)
-
-st.write(base2)
-
 
 
 df_rank = base2[var].copy()
