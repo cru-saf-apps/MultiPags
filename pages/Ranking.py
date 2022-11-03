@@ -41,7 +41,7 @@ def gen_base(lista_anos, lista_ligas):
 base = gen_base(lista_anos, lista_ligas)
 
 vars_info = ['Ano','Liga','Jogador','Equipe atual','Equipe no ano','Posição','Idade','Valor de mercado',
-             'Contrato termina','Naturalidade','País de nacionalidade','Pé','Altura','Peso','Emprestado']
+             'Contrato termina','Naturalidade','País de nacionalidade','Pé','Altura','Peso','Emprestado','Partidas jogadas']
 
 
 vars_abs = ['Minutos','Golos','Golos esperados','Assistências','Assistências esperadas','Cortes de carrinho ajust. à posse',
