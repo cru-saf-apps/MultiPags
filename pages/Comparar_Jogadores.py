@@ -78,7 +78,7 @@ dic_posicoes = {'Goleiro':['GK'],
 lista_selec = []
 for coluna in base.columns.tolist():
   if coluna not in vars_info:
-    if coluna != 'Minutos':
+    if coluna != 'Minutos' or coluna != 'Partidas jogadas':
       lista_selec.append(coluna)    
 
 vars_select = st.multiselect("Selecione variáveis para definição de ranking",options=lista_selec)
