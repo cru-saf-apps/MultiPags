@@ -50,6 +50,6 @@ while t<len(nomes):
     lista_results.append(nomes[t])
   t += 1
 
-st.write(base[base.Jogador.isin(lista_results)].reset_index(drop=True)[['Jogador','Equipe atual','Idade']][0])
+st.write(base[base.Jogador.isin(lista_results)].reset_index(drop=True)[['Jogador','Equipe atual','Idade']][:1])
 
 
