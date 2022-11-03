@@ -39,6 +39,7 @@ def gen_base(lista_anos, lista_ligas):
     return base
 
 base = gen_base(lista_anos, lista_ligas)
+st.write(base)
 
 pesq_rap = st.text_input('Digite o nome desejado:')
 
@@ -50,6 +51,9 @@ while t<len(nomes):
     lista_results.append(nomes[t])
   t += 1
 
-st.write(base[base.Jogador.isin(lista_results)].reset_index(drop=True)[['Jogador','Equipe atual','Idade']][:1])
+try:
+    st.write(base[base.Jogador.isin(lista_results)].reset_index(drop=True)[['Jogador','Equipe atual','Idade']][:1])
+except:
+    st.write('Digite o nome do jogador como consta no WyScout')
 
 
