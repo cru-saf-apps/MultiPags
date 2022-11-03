@@ -41,9 +41,14 @@ def gen_base(lista_anos, lista_ligas):
 base = gen_base(lista_anos, lista_ligas)
 st.write(base)
 
-df_jogs = base.drop_duplicates(subset = ['Jogador','Equipe atual'])
+@st.cache
+def gen_df_jogs(base):
+    df_jogs = base.drop_duplicates(subset = ['Jogador','Equipe atual'])
+    
+    return df_jogs
 
-st.write(len(df_jogs))
+df_jogs = gen_df_jogs(base)
+
 
 pesq_rap = st.text_input('Digite o nome desejado:')
 
@@ -56,7 +61,7 @@ while t<len(nomes):
   t += 1
 
 try:
-    st.write(base[base.Jogador.isin(lista_results)].reset_index(drop=True)[['Jogador','Equipe atual','Idade']])
+    st.write(df_jogs[df_jogs.Jogador.isin(lista_results)].reset_index(drop=True)[['Jogador','Equipe atual','Idade']])
 except:
     st.write('Digite o nome do jogador como consta no WyScout')
 
