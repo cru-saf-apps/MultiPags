@@ -72,6 +72,7 @@ opcao = st.radio('Selecione a opção desejada:',options = ['Ver shortlist / equ
 
 if opcao == 'Adicionar jogador':
     lista = pd.read_csv('lista_pedro.csv')
+    st.write(lista)
     
     nome = st.text_input('Nome do jogador que deseja adicionar:')
     
