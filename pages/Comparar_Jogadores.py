@@ -90,8 +90,6 @@ var = vars_info.copy()
 var.extend(vars_comp)
 
 
-''' começo da criação da base de dados a ser usada para ranking'''
-'''precisa diferenciar por liga'''
 
 @st.cache
 def gen_base2(base):
