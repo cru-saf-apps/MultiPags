@@ -40,25 +40,16 @@ def gen_base(lista_anos, lista_ligas):
 
 base = gen_base(lista_anos, lista_ligas)
 
-@st.cache
-def gen_df_jogs(base):
-    df_jogs = base.drop_duplicates(subset=['Jogador','Equipe atual'],keep=False)
-    
-    return df_jogs
-
-df_jogs = gen_df_jogs(base)
-
-st.write(df_jogs)
-
-st.subheader("Busca por Jogador")
 pesq_rap = st.text_input('Digite o nome desejado:')
 
 lista_results = []
-nomes = pd.unique(df_jogs.Jogador).tolist()
+nomes = pd.unique(base.Jogador).tolist()
 t = 0
 while t<len(nomes):
   if pesq_rap in nomes[t]:
     lista_results.append(nomes[t])
   t += 1
 
-st.write(df_jogs[df_jogs.Jogador.isin(lista_results)][['Jogador','Idade','Equipe atual','Minutos','Ano','Liga']])
+st.write(base[base.Jogador.isin(lista_results)][['Jogador','Equipe atual','Idade']])
+
+
