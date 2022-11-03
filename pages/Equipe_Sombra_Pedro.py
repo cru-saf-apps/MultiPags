@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
+import csv
 
 
 
@@ -71,7 +72,6 @@ opcao = st.radio('Selecione a opção desejada:',options = ['Ver shortlist / equ
 
 if opcao == 'Adicionar jogador':
     lista = pd.read_csv('lista_pedro.csv')
-    st.write(lista)
     
     nome = st.text_input('Nome do jogador que deseja adicionar:')
     
@@ -86,6 +86,20 @@ if opcao == 'Adicionar jogador':
     
     else:
         st.write(aux_df[['Jogador','Equipe atual']])
+        
+    botao_add = st.button('Adicionar jogador acima na shortlist')
+    
+    if botao_add:
+        lista_add = []
+        lista_add.append(aux_df.Jogador.tolist()[0])
+        lista_add.append(aux_df['Equipe atual'].tolist()[0])
+        
+        with open('lista_pedro.csv','w') as f:
+            writer = csv.writer(f)
+            
+            writer.writerow(lista_add)
+            
+            f.close()
     
     
     
