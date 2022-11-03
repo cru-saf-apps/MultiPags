@@ -52,7 +52,7 @@ while t<len(nomes):
   t += 1
 
 try:
-    st.write(base[base.Jogador.isin(lista_results)].reset_index(drop=True)[['Jogador','Equipe atual','Idade']][:1])
+    st.write(base[base.Jogador.isin(lista_results)].reset_index(drop=True)[['Jogador','Equipe atual','Idade']])
 except:
     st.write('Digite o nome do jogador como consta no WyScout')
 
