@@ -39,7 +39,6 @@ def gen_base(lista_anos, lista_ligas):
     return base
 
 base = gen_base(lista_anos, lista_ligas)
-st.write(base)
 
 @st.cache
 def gen_df_jogs(base):
@@ -49,7 +48,7 @@ def gen_df_jogs(base):
 
 df_jogs = gen_df_jogs(base)
 
-
+st.subheader('Busca Rápida')
 pesq_rap = st.text_input('Digite o nome desejado:')
 
 lista_results = []
@@ -66,3 +65,22 @@ except:
     st.write('Digite o nome do jogador como consta no WyScout')
 
 
+st.subheader('O que deseja fazer?')
+
+opcao = st.radio('Selecione a opção desejada:',options = ['Ver shortlist / equipe sombra','Adicionar jogador','Remover jogador'])
+
+if opcao == 'Ver shortlist / equipe sombra':
+    
+    
+    
+elif opcao == 'Adicionar jogador':
+    lista = pd.read_csv('lista_pedro.csv')
+    st.write(lista)
+    
+    
+    
+    
+    
+    
+    
+    
