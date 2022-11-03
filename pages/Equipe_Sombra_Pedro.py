@@ -52,4 +52,4 @@ while t<len(nomes):
     lista_results.append(nomes[t])
   t += 1
 
-st.write(base[base.Jogador.isin(lista_results)][['Jogador','Equipe atual','Equipe no ano','Minutos jogados:','Ano','Liga']])
+st.write(base[base.Jogador.isin(lista_results)][['Jogador','Equipe atual','Equipe no ano','Minutos','Ano','Liga']])
