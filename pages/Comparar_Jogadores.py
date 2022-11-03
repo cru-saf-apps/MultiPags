@@ -74,13 +74,6 @@ dic_posicoes = {'Goleiro':['GK'],
                'Centroavante': ['CF'],
                'Segundo Atacante': ['CF', 'AMF']}
 
-pos_select = st.multiselect('Quais posições entram no ranking?',options=posicoes)
-
-
-lista_pos_select = []
-for item in pos_select:
-    lista_pos_select.append(item)
-
     
 lista_selec = []
 for coluna in base.columns.tolist():
