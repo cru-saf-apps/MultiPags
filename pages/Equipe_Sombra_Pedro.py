@@ -48,6 +48,8 @@ def gen_df_jogs(base):
 
 df_jogs = gen_df_jogs(base)
 
+st.write(df_jogs)
+
 st.subheader("Busca por Jogador")
 pesq_rap = st.text_input('Digite o nome desejado:')
 
