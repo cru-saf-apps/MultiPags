@@ -85,7 +85,7 @@ if opcao == 'Adicionar jogador':
         st.write(aux_df)
     
     else:
-        st.write(aux_df)
+        st.write(aux_df[['Jogador','Equipe atual']])
     
     
     
