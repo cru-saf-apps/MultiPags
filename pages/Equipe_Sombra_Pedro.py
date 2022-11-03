@@ -84,6 +84,9 @@ if opcao == 'Adicionar jogador':
         aux_df = df_jogs[(df_jogs.Jogador == nome)&(df_jogs['Equipe atual'] == equipe)]
         st.write(aux_df)
     
+    else:
+        st.write(aux_df)
+    
     
     
     
