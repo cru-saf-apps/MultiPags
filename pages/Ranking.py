@@ -77,9 +77,7 @@ dic_posicoes = {'Goleiro':['GK'],
 pos_select = st.selectbox('Quais posições entram no ranking?',options=posicoes)
 
 
-lista_pos_select = []
-for item in pos_select:
-    lista_pos_select.append(item)
+lista_pos_select = [pos_select]
 
     
 lista_selec = []
