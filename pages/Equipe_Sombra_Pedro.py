@@ -91,6 +91,7 @@ if opcao == 'Adicionar jogador':
     botao_add = st.button('Adicionar jogador acima na shortlist')
     
     if botao_add:
+        ''' fazer o arquivo csv com append e fechar ao final'''
         lista_add = []
         lista_add.append(aux_df.Jogador.tolist()[0])
         lista_add.append(aux_df['Equipe atual'].tolist()[0])
