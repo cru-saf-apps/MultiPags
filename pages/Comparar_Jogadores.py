@@ -41,7 +41,7 @@ def gen_base(lista_anos, lista_ligas):
 base = gen_base(lista_anos, lista_ligas)
 
 vars_info = ['Ano','Liga','Jogador','Equipe atual','Equipe no ano','Posição','Idade','Valor de mercado',
-             'Contrato termina','Naturalidade','País de nacionalidade','Pé','Altura','Peso','Emprestado']
+             'Contrato termina','Naturalidade','País de nacionalidade','Pé','Altura','Peso','Emprestado','Partidas jogadas']
 
 
 vars_abs = ['Minutos','Golos','Golos esperados','Assistências','Assistências esperadas','Cortes de carrinho ajust. à posse',
@@ -78,7 +78,7 @@ dic_posicoes = {'Goleiro':['GK'],
 lista_selec = []
 for coluna in base.columns.tolist():
   if coluna not in vars_info:
-    if coluna != 'Minutos' or coluna != 'Partidas jogadas':
+    if coluna != 'Minutos':
       lista_selec.append(coluna)    
 
 vars_select = st.multiselect("Selecione variáveis para definição de ranking",options=lista_selec)
