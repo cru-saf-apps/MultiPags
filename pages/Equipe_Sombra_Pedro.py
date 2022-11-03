@@ -41,6 +41,10 @@ def gen_base(lista_anos, lista_ligas):
 base = gen_base(lista_anos, lista_ligas)
 st.write(base)
 
+df_jogs = base.drop_duplicates(subset = ['Jogador','Equipe atual'])
+
+st.write(len(df_jogs))
+
 pesq_rap = st.text_input('Digite o nome desejado:')
 
 lista_results = []
