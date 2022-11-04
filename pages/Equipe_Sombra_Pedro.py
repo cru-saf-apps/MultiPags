@@ -19,7 +19,7 @@ def updategitfiles(file_names,file_list,userid,pwd,Repo,branch,commit_message ="
     if commit_message == "":
        commit_message = "Data Updated - "+ dt.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    g = Github(userid,pwd)
+    g = github.Github(userid,pwd)
     repo = g.get_user().get_repo(Repo)
     master_ref = repo.get_git_ref("heads/"+branch)
     master_sha = master_ref.object.sha
