@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 import csv
+from github import Github
+from github import InputGitTreeElement
+from datetime import datetime as dt
 
 
 
@@ -11,6 +14,27 @@ lista_anos = ['2020','2021']
 lista_ligas = ['BRA1','BRA2','ARG1']
 
 peso_ligas = {'BRA1':1, 'BRA2':0.5,'ARG1':0.9}
+
+@st.cache
+def updategitfiles(file_names,file_list,userid,pwd,Repo,branch,commit_message =""):
+    if commit_message == "":
+       commit_message = "Data Updated - "+ datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    g = Github(userid,pwd)
+    repo = g.get_user().get_repo(Repo)
+    master_ref = repo.get_git_ref("heads/"+branch)
+    master_sha = master_ref.object.sha
+    base_tree = repo.get_git_tree(master_sha)
+    element_list = list()
+    for i in range(0,len(file_list)):
+        element = InputGitTreeElement(file_names[i], '100644', 'blob', file_list[i])
+        element_list.append(element)
+    tree = repo.create_git_tree(element_list, base_tree)
+    parent = repo.get_git_commit(master_sha)
+    commit = repo.create_git_commit(commit_message, tree, [parent])
+    master_ref.edit(commit.sha)
+    print('Update complete')
+
 
 @st.cache
 def gen_base(lista_anos, lista_ligas):
@@ -90,19 +114,22 @@ if opcao == 'Adicionar jogador':
     botao_add = st.button('Adicionar jogador acima')
     
     if botao_add:
+        
         lista_add = []
         lista_add.append(aux_df.Jogador.tolist()[0])
         lista_add.append(aux_df['Equipe atual'].tolist()[0])
         lista_add.append(aux_df['Posição'].tolist()[0])
         st.write(lista_add)
+        
         if len(lista) > 0:
             lista.loc[len(lista)] = lista_add
         else:
             lista.loc[0] = lista_add
             
-        lista.to_csv('lista_pedro.csv',index=False)
-        
-    
+        updategitfiles(file_list = [lista],file_names = ['lista_pedro.csv'],
+                       userid = 'cru-saf-apps',pwd = 'fantauva2lfede',
+                       Repo = 'MultiPags',branch = 'main',commit_message ="")
+
     st.write(lista)
     
     
