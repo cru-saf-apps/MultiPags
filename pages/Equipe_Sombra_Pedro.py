@@ -94,7 +94,7 @@ if opcao == 'Adicionar jogador':
         lista_add.append(aux_df.Jogador.tolist()[0])
         lista_add.append(aux_df['Equipe atual'].tolist()[0])
         lista_add.append(aux_df['Posição'].tolist()[0])
- 
+        st.write(lista_add)
         if len(lista) > 0:
             lista.loc[len(lista)] = lista_add
         else:
