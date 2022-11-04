@@ -78,7 +78,7 @@ if opcao == 'Adicionar jogador':
     aux_df = df_jogs[df_jogs.Jogador == nome]
     
     if len(aux_df) > 1:
-        st.write(aux_df)
+        st.write(aux_df[['Jogador','Equipe atual','Posição']])
         equipe = st.text_input('Equipe atual do jogador:')
         
         aux_df = df_jogs[(df_jogs.Jogador == nome)&(df_jogs['Equipe atual'] == equipe)]
