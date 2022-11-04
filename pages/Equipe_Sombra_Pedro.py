@@ -97,7 +97,6 @@ if opcao == 'Adicionar jogador':
             writer = csv.writer(f)
             writer.writerow(lista_add)
             f.close()
-
     st.write(lista)
     
     
