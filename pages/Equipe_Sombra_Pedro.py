@@ -6,8 +6,6 @@ import csv
 
 
 
-
-
 lista_anos = ['2020','2021']
 
 lista_ligas = ['BRA1','BRA2','ARG1']
@@ -88,19 +86,18 @@ if opcao == 'Adicionar jogador':
     
     else:
         st.write(aux_df[['Jogador','Equipe atual','Posição']])
-        
-    botao_add = st.button('Adicionar jogador acima na shortlist')
     
-    if botao_add:
-        lista_add = []
-        lista_add.append(aux_df.Jogador.tolist()[0])
-        lista_add.append(aux_df['Equipe atual'].tolist()[0])
-        lista_add.append(aux_df['Posição'].tolist()[0])
-        
-        with open('lista_pedro.csv','a') as f:
-            writer = csv.writer(f)
-            writer.writerow(lista_add)
-            f.close()
+    if len(aux_df) == 1:
+    
+    lista_add = []
+    lista_add.append(aux_df.Jogador.tolist()[0])
+    lista_add.append(aux_df['Equipe atual'].tolist()[0])
+    lista_add.append(aux_df['Posição'].tolist()[0])
+
+    with open('lista_pedro.csv','a') as f:
+        writer = csv.writer(f)
+        writer.writerow(lista_add)
+        f.close()
 
     st.write(lista)
     
