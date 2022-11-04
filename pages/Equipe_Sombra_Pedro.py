@@ -86,7 +86,7 @@ if opcao == 'Adicionar jogador':
         st.write(aux_df)
     
     else:
-        st.write(aux_df[['Jogador','Equipe atual']])
+        st.write(aux_df[['Jogador','Equipe atual','Posição']])
         
     botao_add = st.button('Adicionar jogador acima na shortlist')
     
@@ -95,6 +95,7 @@ if opcao == 'Adicionar jogador':
         lista_add = []
         lista_add.append(aux_df.Jogador.tolist()[0])
         lista_add.append(aux_df['Equipe atual'].tolist()[0])
+        lista_add.append(aux_df['Posição'])
         
         with open('lista_pedro.csv','a') as f:
             writer = csv.writer(f)
@@ -106,6 +107,10 @@ if opcao == 'Adicionar jogador':
     st.write(lista)
     
     
+if botao == 'Remover jogador':
+    st.write(lista)
+    
+    nome = st.text_input('Qual jogador deseja remover?')
     
     
     
