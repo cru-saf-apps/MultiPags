@@ -100,7 +100,7 @@ if opcao == 'Adicionar jogador':
         else:
             lista.loc[0] = lista_add
             
-        lista.to_csv('lista_pedro.csv')
+        lista.to_csv('lista_pedro.csv',index=False)
         
     
     st.write(lista)
