@@ -17,7 +17,7 @@ peso_ligas = {'BRA1':1, 'BRA2':0.5,'ARG1':0.9}
 @st.cache
 def updategitfiles(file_names,file_list,userid,pwd,Repo,branch,commit_message =""):
     if commit_message == "":
-       commit_message = "Data Updated - "+ datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+       commit_message = "Data Updated - "+ dt.now().strftime('%Y-%m-%d %H:%M:%S')
 
     g = Github(userid,pwd)
     repo = g.get_user().get_repo(Repo)
