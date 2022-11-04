@@ -84,7 +84,7 @@ if opcao == 'Adicionar jogador':
         equipe = st.text_input('Equipe atual do jogador:')
         
         aux_df = df_jogs[(df_jogs.Jogador == nome)&(df_jogs['Equipe atual'] == equipe)]
-        st.write(aux_df)
+        st.write(aux_df[['Jogador','Equipe atual','Posição']])
     
     else:
         st.write(aux_df[['Jogador','Equipe atual','Posição']])
@@ -111,6 +111,18 @@ if opcao == 'Remover jogador':
     st.write(lista)
     
     nome = st.text_input('Qual jogador deseja remover?')
+    
+    aux_df = lista[lista.Jogador == nome]
+    
+    if len(aux_df) > 1:
+        st.write(aux_df)
+        equipe = st.text_input('Equipe atual do jogador:')
+        
+        aux_df = lista[(lista.Jogador == nome)&(lista['Equipe atual'] == equipe)]
+        st.write(aux_df[['Jogador','Equipe atual','Posição']])
+    
+    else:
+        st.write(aux_df[['Jogador','Equipe atual','Posição']])
     
     
     
