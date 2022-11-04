@@ -107,7 +107,7 @@ if opcao == 'Adicionar jogador':
     st.write(lista)
     
     
-if botao == 'Remover jogador':
+if opcao == 'Remover jogador':
     st.write(lista)
     
     nome = st.text_input('Qual jogador deseja remover?')
