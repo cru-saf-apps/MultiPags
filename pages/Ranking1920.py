@@ -11,7 +11,7 @@ lista_anos = ['2019','2020']
 
 lista_ligas = ['BRA1','BRA2']
 
-peso_ligas = {'BRA1':1, 'BRA2':0.5,'ARG1':0.9}
+peso_ligas = {'BRA1':1, 'BRA2':0.5}
 
 @st.cache
 def gen_base(lista_anos, lista_ligas):
