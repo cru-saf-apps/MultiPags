@@ -69,9 +69,10 @@ except:
 st.subheader('O que deseja fazer?')
 
 opcao = st.radio('Selecione a opção desejada:',options = ['Ver shortlist / equipe sombra','Adicionar jogador','Remover jogador'])
+lista = pd.read_csv('lista_pedro.csv')
 
 if opcao == 'Adicionar jogador':
-    lista = pd.read_csv('lista_pedro.csv')
+    
     st.write(lista)
     
     nome = st.text_input('Nome do jogador que deseja adicionar:')
