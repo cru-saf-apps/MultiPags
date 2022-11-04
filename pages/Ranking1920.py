@@ -9,7 +9,7 @@ from matplotlib import pyplot as plt
 
 lista_anos = ['2019','2020']
 
-lista_ligas = ['BRA1','BRA2','ARG1']
+lista_ligas = ['BRA1','BRA2']
 
 peso_ligas = {'BRA1':1, 'BRA2':0.5,'ARG1':0.9}
 
