@@ -3,8 +3,7 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 import csv
-from github import Github
-from github import InputGitTreeElement
+import github
 from datetime import datetime as dt
 
 
