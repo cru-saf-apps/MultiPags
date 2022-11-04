@@ -87,16 +87,22 @@ if opcao == 'Adicionar jogador':
     else:
         st.write(aux_df[['Jogador','Equipe atual','Posição']])
     
-    if len(aux_df) == 1:
+    botao_add = st.button('Adicionar jogador acima')
+    
+    if botao:
         lista_add = []
         lista_add.append(aux_df.Jogador.tolist()[0])
         lista_add.append(aux_df['Equipe atual'].tolist()[0])
         lista_add.append(aux_df['Posição'].tolist()[0])
-
-        with open('lista_pedro.csv','a') as f:
-            writer = csv.writer(f)
-            writer.writerow(lista_add)
-            f.close()
+ 
+        if len(lista) > 0:
+            lista.loc[len(lista)] = lista_add
+        else:
+            lista.loc[0] = lista_add
+            
+        lista.to_csv('lista_pedro.csv')
+        
+    
     st.write(lista)
     
     
