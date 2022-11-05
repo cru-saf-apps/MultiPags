@@ -4,7 +4,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-
+st.title('Comparação de jogador, por posição')
 
 
 lista_anos = ['2020','2021']
