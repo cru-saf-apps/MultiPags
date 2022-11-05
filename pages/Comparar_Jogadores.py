@@ -5,8 +5,6 @@ from matplotlib import pyplot as plt
 
 
 
-
-
 lista_anos = ['2020','2021']
 
 lista_ligas = ['BRA1','BRA2','ARG1']
@@ -81,6 +79,9 @@ for coluna in base.columns.tolist():
     if coluna != 'Minutos':
       lista_selec.append(coluna)    
 
+st.title('Comparação de jogador, por variáveis')
+
+   
 vars_select = st.multiselect("Selecione variáveis para definição de ranking",options=lista_selec)
 
 vars_comp = ['Minutos']
@@ -262,6 +263,10 @@ class ComplexRadar():
 
 
         
+st.subheader('Selecione os jogadores para comparação')
+st.write('Escrever o nome como consta no WyScout')
+        
+        
 nome_busca1 = st.text_input("Nome do primeiro jogador:")
 
 if len(df_show[df_show.Jogador==nome_busca1]) == 0:
@@ -302,8 +307,10 @@ else:
   st.write(df2[['Ranking','Jogador','Equipe atual','Minutos']])
 
 
-
-df = pd.concat([df1,df2])
+try:
+    df = pd.concat([df1,df2])
+except:
+    st.write('')
 
 
 lista_ranges = []
@@ -327,5 +334,7 @@ for jog in df.Ranking:
     radar.plot(lista_valores,label=nome+" ("+str(jog)+")")
 
 fig.legend()
+
+st.subheader('Gráfico Radar:'+nome_busca_1+' X '+nome_busca_2)
 
 st.pyplot(fig)
