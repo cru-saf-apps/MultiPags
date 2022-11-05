@@ -4,4 +4,15 @@ st.title('Análise de Mercado / Scouting - Cruzeiro SAF')
 
 st.subheader('Guia do site')
 
-st.write('As opções disponíveis atualmente são para comparação de jogadores e para rankeamento, por posição.')
+st.write('Opções disponíveis atualmente:')
+
+st.markdown("- Rankeamento, por posição;")
+st.markdown("- Comparação de jogadores;")
+
+st.markdown('''
+<style>
+[data-testid="stMarkdownContainer"] ul{
+    list-style-position: inside;
+}
+</style>
+''', unsafe_allow_html=True)
