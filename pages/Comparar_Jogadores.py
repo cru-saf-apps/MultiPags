@@ -335,6 +335,6 @@ for jog in df.Ranking:
 
 fig.legend()
 
-st.subheader('Gráfico Radar:'+nome_busca1+' X '+nome_busca2)
+st.subheader('Gráfico Radar: '+nome_busca1+' X '+nome_busca2)
 
 st.pyplot(fig)
