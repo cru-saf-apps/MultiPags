@@ -181,8 +181,10 @@ else:
   st.write(df1[['Jogador','Posição','Equipe atual']])
   clube1 = df1['Equipe atual'].tolist()[0]
 
-df_resumo_jog = base[(base.Jogador == nome_busca1) & (base['Equipe atual'] == clube1)][['Jogador','Posição','Equipe atual']][0]
+df_resumo_jog = base[(base.Jogador == nome_busca1) & (base['Equipe atual'] == clube1)][['Jogador','Posição','Equipe atual']]
 df_resumo_jog = df_resumo_jog.reset_index(drop=True)
+df_resumo_jog = df_resumo_jog[:1]
+
 
 for coluna in vars_comp:
     df_resumo_jog[coluna] = ""
