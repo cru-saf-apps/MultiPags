@@ -227,6 +227,6 @@ def gen_df_show_pronto(df_dif, vars_select):
 
     return df_show
 
-df_show = gen_df_show_pronto(df_jogs,vars_select)
+df_show = gen_df_show_pronto(df_dif,vars_select)
 
 st.write(df_show)
