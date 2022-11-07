@@ -181,7 +181,20 @@ else:
   st.write(df1[['Jogador','Posição','Equipe atual']])
   clube1 = df1['Equipe atual'].tolist()[0]
 
+df_resumo_jog = base[base.Jogador == nome_busca1 & base['Equipe atual'] == clube1][['Jogador','Posição','Equipe atual']]
+df_resumo_jog = df_resumo_jog.reset_index(drop=True)
 
+for coluna in vars_comp:
+    df_resumo_jog[coluna] = ""
+    aux_df = base[(base.Jogador == nome_busca1)&(base['Equipe atual'] == clube1)]
+    if coluna in vars_abs:
+        soma = np.nansum(aux_df[coluna])
+    else:
+        soma = np.nanmean(aux_df[coluna])
+
+    df_resumo_jog[coluna][0] = soma
+
+st.write(df_resumo_jog)
     
 @st.cache
 def gen_df_dif(nome_busca1,clube1,df_jogs,vars_comp):
@@ -201,7 +214,7 @@ def gen_df_dif(nome_busca1,clube1,df_jogs,vars_comp):
 
     for coluna in vars_comp:
         for index, row in df_jogs_comp.iterrows():
-            ind_dif = abs((df_jogs_comp[coluna][index] - dic_jogador[coluna])/(np.nanmax(df_jogs_comp[coluna]) - np.nanmin(df_jogs_comp[coluna])))
+            ind_dif = abs((df_jogs_comp[coluna][index] - dic_jogador[coluna])/(np.nanmax(df_jogs[coluna]) - np.nanmin(df_jogs[coluna])))
             df_dif[coluna][index] = ind_dif
 
     df_dif['Media'] = df_dif[vars_comp].mean(axis=1)
