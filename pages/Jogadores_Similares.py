@@ -327,16 +327,16 @@ if len(df_show[df_show.Jogador==nome_busca2]) == 0:
 
 elif len(pd.unique(df_show[df_show.Jogador==nome_busca2]['Equipe atual']))>1:
   st.write("Mais de um jogador disponível com este nome, favor inserir o clube atual do jogador desejado.")
-  st.write(df_show[df_show.Jogador==nome_busca2][['Ranking','Jogador','Equipe atual','Minutos']])
+  st.write(df_show[df_show.Jogador==nome_busca2][['Jogador','Equipe atual','Minutos']])
   clube2 = st.text_input("Clube do segundo jogador:")
   df2 = df_show[(df_show.Jogador==nome_busca2)&(df_show["Equipe atual"] == clube2)]
   st.write("Tabela resumo do jogador desejado:")
-  st.write(df2[['Ranking','Jogador','Equipe atual','Minutos']])
+  st.write(df2[['Jogador','Equipe atual','Minutos']])
     
 else:
   df2 = df_show[df_show.Jogador == nome_busca2]
   st.write("Tabela resumo do jogador desejado:")
-  st.write(df2[['Ranking','Jogador','Equipe atual','Minutos']])
+  st.write(df2[['Jogador','Equipe atual','Minutos']])
 
 
 
