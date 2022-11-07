@@ -191,7 +191,7 @@ for coluna in vars_select:
     dic_jogador[coluna] = df_jogador[coluna][0]
 
 
-df_jogs_comp = df_jogs[df_jogs.Jogador != jogador]
+df_jogs_comp = pd.concat([df_jogador,df_jogs]).drop_duplicates(keep=False)
 
 df_dif = df_jogs_comp.copy()
 
