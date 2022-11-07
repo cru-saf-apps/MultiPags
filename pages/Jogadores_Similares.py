@@ -202,6 +202,7 @@ for coluna in vars_comp:
         
 df_dif['Media'] = df_dif[vars_select].mean(axis=1)
 
+st.write(df_dif)
 
 @st.cache
 def gen_df_show_pronto(df_dif, vars_select):
