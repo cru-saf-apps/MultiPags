@@ -359,7 +359,7 @@ for jogador in pd.unique(df.Jogador):
     nome = aux_df.Jogador.tolist()[0]
     lista_valores = []
     
-    for coluna in aux_df.columns[-(len(vars_select)+4):-4]:
+    for coluna in aux_df.columns[-(len(vars_select)):]:
         lista_valores.append(aux_df[coluna].tolist()[0])
         
     radar.plot(lista_valores,label=nome+" ("+str(jogador)+")")
