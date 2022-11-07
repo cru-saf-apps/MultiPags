@@ -251,3 +251,120 @@ def gen_df_show_pronto(df_dif, vars_select):
 df_show = gen_df_show_pronto(df_dif,vars_select)
 
 st.write(df_show)
+
+
+
+
+def _invert(x, limits):
+    """inverts a value x on a scale from
+    limits[0] to limits[1]"""
+    return limits[1] - (x - limits[0])
+
+def _scale_data(data, ranges):
+    """scales data[1:] to ranges[0],
+    inverts if the scale is reversed"""
+    for d, (y1, y2) in zip(data[1:], ranges[1:]):
+        assert (y1 <= d <= y2) or (y2 <= d <= y1)
+    x1, x2 = ranges[0]
+    d = data[0]
+    if x1 > x2:
+        d = _invert(d, (x1, x2))
+        x1, x2 = x2, x1
+    sdata = [d]
+    for d, (y1, y2) in zip(data[1:], ranges[1:]):
+        if y1 > y2:
+            d = _invert(d, (y1, y2))
+            y1, y2 = y2, y1
+        sdata.append((d-y1) / (y2-y1) 
+                     * (x2 - x1) + x1)
+    return sdata
+
+class ComplexRadar():
+    def __init__(self, fig, variables, ranges,
+                 n_ordinate_levels=6):
+        angles = np.arange(0, 360, 360./len(variables))
+
+        axes = [fig.add_axes([0.1,0.1,0.9,0.9],polar=True,
+                label = "axes{}".format(i)) 
+                for i in range(len(variables))]
+        l, text = axes[0].set_thetagrids(angles, 
+                                         labels=variables)
+        [txt.set_rotation(angle-90) for txt, angle 
+             in zip(text, angles)]
+        for ax in axes[1:]:
+            ax.patch.set_visible(False)
+            ax.grid("off")
+            ax.xaxis.set_visible(False)
+        for i, ax in enumerate(axes):
+            grid = np.linspace(*ranges[i], 
+                               num=n_ordinate_levels)
+            gridlabel = ["{}".format(round(x,2)) 
+                         for x in grid]
+            if ranges[i][0] > ranges[i][1]:
+                grid = grid[::-1] # hack to invert grid
+                          # gridlabels aren't reversed
+            gridlabel[0] = "" # clean up origin
+            ax.set_rgrids(grid, labels=gridlabel,
+                         angle=angles[i])
+            #ax.spines["polar"].set_visible(False)
+            ax.set_ylim(*ranges[i])
+        # variables for plotting
+        self.angle = np.deg2rad(np.r_[angles, angles[0]])
+        self.ranges = ranges
+        self.ax = axes[0]
+    def plot(self, data, *args, **kw):
+        sdata = _scale_data(data, self.ranges)
+        self.ax.plot(self.angle, np.r_[sdata, sdata[0]], *args, **kw)
+    def fill(self, data, *args, **kw):
+        sdata = _scale_data(data, self.ranges)
+        self.ax.fill(self.angle, np.r_[sdata, sdata[0]], *args, **kw)
+        
+        
+nome_busca2 = st.text_input("Nome do segundo jogador:")
+
+if len(df_show[df_show.Jogador==nome_busca2]) == 0:
+  st.write("Favor inserir o nome do jogador igual no WyScout")
+
+elif len(pd.unique(df_show[df_show.Jogador==nome_busca2]['Equipe atual']))>1:
+  st.write("Mais de um jogador disponível com este nome, favor inserir o clube atual do jogador desejado.")
+  st.write(df_show[df_show.Jogador==nome_busca2][['Ranking','Jogador','Equipe atual','Minutos']])
+  clube2 = st.text_input("Clube do segundo jogador:")
+  df2 = df_show[(df_show.Jogador==nome_busca2)&(df_show["Equipe atual"] == clube2)]
+  st.write("Tabela resumo do jogador desejado:")
+  st.write(df2[['Ranking','Jogador','Equipe atual','Minutos']])
+    
+else:
+  df2 = df_show[df_show.Jogador == nome_busca2]
+  st.write("Tabela resumo do jogador desejado:")
+  st.write(df2[['Ranking','Jogador','Equipe atual','Minutos']])
+
+
+
+df = pd.concat([df1,df2])
+
+
+lista_ranges = []
+for coluna in df.columns[-(len(vars_select)+4):-4]:
+    lista_ranges.append((np.nanmin(df_show[coluna]),np.nanmax(df_show[coluna])))
+    
+
+
+fig = plt.figure(figsize = (8,8))
+
+radar = ComplexRadar(fig,vars_select,lista_ranges)
+    
+for jog in df.Ranking:
+    aux_df = df[df.Ranking == jog]
+    nome = aux_df.Jogador.tolist()[0]
+    lista_valores = []
+    
+    for coluna in aux_df.columns[-(len(vars_select)+4):-4]:
+        lista_valores.append(aux_df[coluna].tolist()[0])
+        
+    radar.plot(lista_valores,label=nome+" ("+str(jog)+")")
+
+fig.legend()
+
+st.pyplot(fig)
+
+
