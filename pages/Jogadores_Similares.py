@@ -353,8 +353,8 @@ fig = plt.figure(figsize = (8,8))
 
 radar = ComplexRadar(fig,vars_select,lista_ranges)
     
-for jog in df.Ranking:
-    aux_df = df[df.Ranking == jog]
+for index, row in df.iterrows():
+    aux_df = df[index]
     nome = aux_df.Jogador.tolist()[0]
     lista_valores = []
     
