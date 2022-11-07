@@ -200,7 +200,7 @@ for coluna in vars_comp:
         ind_dif = abs((df_jogs_comp[coluna][index] - dic_jogador[coluna])/(np.nanmax(df_jogs_comp[coluna]) - np.nanmin(df_jogs_comp[coluna])))
         df_dif[coluna][index] = ind_dif
         
-df_dif['Media'] = df_dif[vars_select].mean(axis=1)
+df_dif['Media'] = df_dif[vars_comp].mean(axis=1)
 
 
 
