@@ -162,11 +162,29 @@ def gen_df_jogs_pronto(df_rank, vars_comp):
 df_jogs = gen_df_jogs_pronto(df_rank,vars_comp)
 
 
-jogador = 'Titi'
+nome_busca1 = st.text_input("Nome do primeiro jogador:")
+
+if len(df_jogs[df_jogs.Jogador==nome_busca1]) == 0:
+  st.write("Favor inserir o nome do jogador igual no WyScout")
+
+elif len(pd.unique(df_jogs[df_jogs.Jogador==nome_busca1]['Equipe atual']))>1:
+  st.write("Mais de um jogador disponível com este nome, favor inserir o clube atual do jogador desejado.")
+  st.write(df_jogs[df_jogs.Jogador==nome_busca1][['Jogador','Equipe atual']])
+  clube1 = st.text_input("Clube do primeiro jogador:")
+  df1 = df_jogs[(df_jogs.Jogador==nome_busca1)&(df_jogs["Equipe atual"] == clube1)]
+  st.write("Tabela resumo do jogador desejado:")
+  st.write(df1[['Jogador','Equipe atual']])
+    
+else:
+  df1 = df_jogs[df_jogs.Jogador == nome_busca1]
+  st.write("Tabela resumo do jogador desejado:")
+  st.write(df1[['Jogador','Equipe atual']])
+  clube1 = df1['Equipe atual'].tolist()[0]
+
 
 dic_jogador = {}
 
-df_jogador = df_jogs[df_jogs.Jogador == jogador]
+df_jogador = df_jogs[(df_jogs.Jogador == nome_busca1)&(df_jogs['Equipe atual'] == clube1)]
 df_jogador = df_jogador.reset_index(drop=True)
 
 for coluna in vars_select:
