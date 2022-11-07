@@ -345,7 +345,7 @@ df = pd.concat([df_resumo_jog,df2]).reset_index(drop=True)
 
 
 lista_ranges = []
-for coluna in df.columns[-(len(vars_select)+4):-4]:
+for coluna in df.columns[-(len(vars_select)):]:
     lista_ranges.append((np.nanmin(df_show[coluna]),np.nanmax(df_show[coluna])))
     
 
