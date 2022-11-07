@@ -250,5 +250,4 @@ def gen_df_show_pronto(df_dif, vars_select):
 
 df_show = gen_df_show_pronto(df_dif,vars_select)
 
-st.write(base[(base.Jogador == nome_busca1)&(base['Equipe atual'] == clube1)][['Jogador', 'Posição', 'Equipe atual']])
 st.write(df_show)
