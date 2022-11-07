@@ -201,8 +201,7 @@ for coluna in vars_comp:
         df_dif[coluna][index] = ind_dif
         
 df_dif['Media'] = df_dif[vars_select].mean(axis=1)
-df_dif = df_sif.sort_values(by='Media',ascending=True)
-df_show = df_show.assign(Ranking = range(1,len(df_show)+1))
+
 
 
 st.write(df_dif)
