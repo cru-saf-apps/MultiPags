@@ -201,12 +201,15 @@ for coluna in vars_comp:
         df_dif[coluna][index] = ind_dif
         
 df_dif['Media'] = df_dif[vars_select].mean(axis=1)
+df_dif = df_sif.sort_values(by='Media',ascending=True)
+df_show = df_show.assign(Ranking = range(1,len(df_show)+1))
+
 
 st.write(df_dif)
 
 @st.cache
 def gen_df_show_pronto(df_dif, vars_select):
-    df_show = df_dif[['Jogador','Posição','Equipe atual']]
+    df_show = df_dif[['Jogador','Posição','Equipe atual','Media']]
 
     for coluna in df_dif.columns[-(len(vars_select)+3):-2]:
         df_show[coluna] = ""
@@ -218,8 +221,6 @@ def gen_df_show_pronto(df_dif, vars_select):
                 soma = np.nanmean(aux_df[coluna])
 
             df_show[coluna][index] = soma
-
-    df_show['Media'] = df_dif['Media']
     
     df_show = df_show.rename(columns={'Media':'Diferença'})
     df_show = df_show.sort_values(by='Diferença',ascending = True)
