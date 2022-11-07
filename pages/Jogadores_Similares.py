@@ -361,7 +361,7 @@ for jogador in pd.unique(df.Jogador):
     for coluna in aux_df.columns[-(len(vars_select)+4):-4]:
         lista_valores.append(aux_df[coluna].tolist()[0])
         
-    radar.plot(lista_valores,label=nome+" ("+str(jog)+")")
+    radar.plot(lista_valores,label=nome+" ("+str(jogador)+")")
 
 fig.legend()
 
