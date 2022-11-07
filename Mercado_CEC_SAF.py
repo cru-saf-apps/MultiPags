@@ -17,3 +17,19 @@ st.markdown('''
 }
 </style>
 ''', unsafe_allow_html=True)
+
+def add_bg_from_url():
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("https://github.com/cru-saf-apps/MultiPags/blob/main/cruzeiro-do-sul.jpg");
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
+
+add_bg_from_url() 
