@@ -169,16 +169,16 @@ if len(df_jogs[df_jogs.Jogador==nome_busca1]) == 0:
 
 elif len(pd.unique(df_jogs[df_jogs.Jogador==nome_busca1]['Equipe atual']))>1:
   st.write("Mais de um jogador disponível com este nome, favor inserir o clube atual do jogador desejado.")
-  st.write(df_jogs[df_jogs.Jogador==nome_busca1][['Jogador','Equipe atual']])
+  st.write(df_jogs[df_jogs.Jogador==nome_busca1][['Jogador','Posição','Equipe atual']])
   clube1 = st.text_input("Clube do primeiro jogador:")
   df1 = df_jogs[(df_jogs.Jogador==nome_busca1)&(df_jogs["Equipe atual"] == clube1)]
   st.write("Tabela resumo do jogador desejado:")
-  st.write(df1[['Jogador','Equipe atual']])
+  st.write(df1[['Jogador','Posição','Equipe atual']])
     
 else:
   df1 = df_jogs[df_jogs.Jogador == nome_busca1]
   st.write("Tabela resumo do jogador desejado:")
-  st.write(df1[['Jogador','Equipe atual']])
+  st.write(df1[['Jogador','Posição','Equipe atual']])
   clube1 = df1['Equipe atual'].tolist()[0]
 
 
@@ -235,4 +235,5 @@ def gen_df_show_pronto(df_dif, vars_select):
 
 df_show = gen_df_show_pronto(df_dif,vars_select)
 
+st.write(base[(base.Jogador == nome_busca1)&(base['Equipe atual'] == clube1)][['Jogador', 'Posição', 'Equipe atual'].extend(vars_comp)])
 st.write(df_show)
