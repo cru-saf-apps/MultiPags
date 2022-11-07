@@ -340,7 +340,7 @@ else:
 
 
 
-df = pd.concat([df1,df2])
+df = pd.concat([df1,df2]).reset_index(drop=True)
 
 
 lista_ranges = []
