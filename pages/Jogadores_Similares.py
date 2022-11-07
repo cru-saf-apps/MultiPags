@@ -221,7 +221,7 @@ def gen_df_show_pronto(df_dif, vars_select):
     df_show['Media'] = df_dif['Media']
     
     df_show = df_show.rename(columns={'Media':'Diferença'})
-    df_show = df_show.sort_values(by='Diferença',ascending = False)
+    df_show = df_show.sort_values(by='Diferença',ascending = True)
     df_show = df_show.assign(Ranking = range(1,len(df_show)+1))
 
     return df_show
