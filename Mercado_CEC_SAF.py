@@ -7,7 +7,8 @@ st.subheader('Guia do site')
 st.write('Opções disponíveis atualmente:')
 
 st.markdown("- Rankeamento, por posição;")
-st.markdown("- Comparação de jogadores;")
+st.markdown("- Comparação de jogadores, por variáveis específicas;")
+st.markdown("- Encontrar jogadores similares, por variáveis específicas;")
 
 st.markdown('''
 <style>
