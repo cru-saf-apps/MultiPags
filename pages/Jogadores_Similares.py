@@ -182,29 +182,34 @@ else:
   clube1 = df1['Equipe atual'].tolist()[0]
 
 
-dic_jogador = {}
+    
+@st.cache
+def gen_df_dif(nome_busca1,clube1,df_jogs,vars_comp):
+    
+    dic_jogador = {}
 
-df_jogador = df_jogs[(df_jogs.Jogador == nome_busca1)&(df_jogs['Equipe atual'] == clube1)]
-df_jogador = df_jogador.reset_index(drop=True)
+    df_jogador = df_jogs[(df_jogs.Jogador == nome_busca1)&(df_jogs['Equipe atual'] == clube1)]
+    df_jogador = df_jogador.reset_index(drop=True)
 
-for coluna in vars_comp:
-    dic_jogador[coluna] = df_jogador[coluna][0]
-
-
-df_jogs_comp = pd.concat([df_jogador,df_jogs]).drop_duplicates(keep=False)
-
-df_dif = df_jogs_comp.copy()
-
-for coluna in vars_comp:
-    for index, row in df_jogs_comp.iterrows():
-        ind_dif = abs((df_jogs_comp[coluna][index] - dic_jogador[coluna])/(np.nanmax(df_jogs_comp[coluna]) - np.nanmin(df_jogs_comp[coluna])))
-        df_dif[coluna][index] = ind_dif
-        
-df_dif['Media'] = df_dif[vars_comp].mean(axis=1)
+    for coluna in vars_comp:
+        dic_jogador[coluna] = df_jogador[coluna][0]
 
 
+    df_jogs_comp = pd.concat([df_jogador,df_jogs]).drop_duplicates(keep=False)
 
-st.write(df_dif)
+    df_dif = df_jogs_comp.copy()
+
+    for coluna in vars_comp:
+        for index, row in df_jogs_comp.iterrows():
+            ind_dif = abs((df_jogs_comp[coluna][index] - dic_jogador[coluna])/(np.nanmax(df_jogs_comp[coluna]) - np.nanmin(df_jogs_comp[coluna])))
+            df_dif[coluna][index] = ind_dif
+
+    df_dif['Media'] = df_dif[vars_comp].mean(axis=1)
+    
+    return df_dif
+
+df_dif = gen_df_dif(nome_busca1,clube1,df_jogs,vars_comp)
+
 
 @st.cache
 def gen_df_show_pronto(df_dif, vars_select):
