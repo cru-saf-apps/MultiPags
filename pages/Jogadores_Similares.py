@@ -318,7 +318,8 @@ class ComplexRadar():
     def fill(self, data, *args, **kw):
         sdata = _scale_data(data, self.ranges)
         self.ax.fill(self.angle, np.r_[sdata, sdata[0]], *args, **kw)
-        
+
+       
         
 nome_busca2 = st.text_input("Nome do segundo jogador:")
 
@@ -338,9 +339,9 @@ else:
   st.write("Tabela resumo do jogador desejado:")
   st.write(df2[['Jogador','Equipe atual','Minutos']])
 
+df2 = df2.drop('Diferença',axis=1)
 
-
-df = pd.concat([df1,df2]).reset_index(drop=True)
+df = pd.concat([df_resumo_jog,df2]).reset_index(drop=True)
 
 
 lista_ranges = []
