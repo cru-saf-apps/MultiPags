@@ -81,7 +81,7 @@ df_clubes = gen_df_clubes(base,df_clubes,vars_abs,vars_info)
 
 
 
-vars_select = st.multiselect('Selecione as variáveis para comparação de equipes:',options = df_clubes.columns.tolist())
+vars_select = st.multiselect('Selecione as variáveis para comparação de equipes:',options = df_clubes.columns.tolist()[4:])
 
 
 equipe = st.selectbox('Selecione a equipe base:', options = pd.unique(df_clubes.Clube))
