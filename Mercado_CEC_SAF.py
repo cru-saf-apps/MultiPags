@@ -29,6 +29,7 @@ st.write('Opções disponíveis atualmente:')
 st.markdown("- Rankeamento, por posição;")
 st.markdown("- Comparação de jogadores, por variáveis específicas;")
 st.markdown("- Encontrar jogadores similares, por variáveis específicas;")
+st.markdown("- Encontrar equipes parecidas, por variáveis específicas")
 
 st.markdown('''
 <style>
