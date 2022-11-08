@@ -64,7 +64,7 @@ vars_abs = ['Minutos','Golos','Golos esperados','Assistências','Assistências e
             'Jogos sem sofrer golos','Golos sofridos esperados','Golos expectáveis defendidos','Penaltis marcados']
 
 @st.cache
-def gen_df_clubes(base,df_clubes,vars_abs,vars_info)
+def gen_df_clubes(base,df_clubes,vars_abs,vars_info):
   for coluna in base.columns:
       if coluna not in vars_info:
           df_clubes[coluna] = ''
