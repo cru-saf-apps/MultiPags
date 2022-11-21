@@ -22,15 +22,27 @@ base['Nota'] = (base['Projeção'] + base['ClasseNum'])/2
 
 posicoes = [1,2,3,4,5,6,7,8,8.5,9,9.5,10,11]
 
-col1, col2, col3 = st.columns(3)
+col11, col9, col7 = st.columns(3)
 
-with col1:
+with col11:
+  st.subheader('Ext. Esquerdo')
   st.write(base[base.Posição==11])
 
-with col2:
+with col9:
+  st.subheader('Centroavante')
   st.write(base[base.Posição==9])
 
-with col3:
+with col7:
+  st.subheader('Ext. Direito')
   st.write(base[base.Posição==7])
 
-st.write(base)
+  
+col10, col9meio = st.columns(2)
+
+with col10:
+  st.subheader('Meia')
+  st.write(base[base.Posição == 10])
+  
+with col9meio:
+  st.subheader('Segundo atacante')
+  st.write(base[base.Posição==9.5])
