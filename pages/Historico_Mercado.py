@@ -32,7 +32,7 @@ for jogador in negoc.ID:
 
   df_hist = pd.concat([df_hist,aux_df])
 
-AgGrid(df_hist, height=1000, fit_columns_on_grid_load=True)
+AgGrid(df_hist, height=500, fit_columns_on_grid_load=False)
 
 st.write(df_hist)  
 
