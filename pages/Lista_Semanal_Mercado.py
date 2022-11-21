@@ -16,8 +16,7 @@ base['ClasseNum'] = ''
 for index, row in base.iterrows():
   base['ClasseNum'][index] = dic_classe[base['Classe'][index]]
 
-base['Nota'] = ''
-
+base['Nota'] = (base['Projeção'] + base['ClasseNum'])/2
 
 
 posicoes = [1,2,3,4,5,6,7,8,8.5,9,9.5,10,11]
