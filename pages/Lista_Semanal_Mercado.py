@@ -65,19 +65,19 @@ with col8:
 col6, col3, col4, col2 = st.columns(4)
 
 with col6:
-  st.subheader('Box to Box')
+  st.subheader('Lat. Esquerdo')
   st.write(base[base.Posição == 6].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
 
 with col3:
-  st.subheader('Box to Box')
+  st.subheader('Zag. Esquerdo')
   st.write(base[base.Posição == 3].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
   
 with col4:
-  st.subheader('Box to Box')
+  st.subheader('Zag. Direito')
   st.write(base[base.Posição == 4].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
   
 with col2:
-  st.subheader('Box to Box')
+  st.subheader('Lat. Direito')
   st.write(base[base.Posição == 2].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
   
   
