@@ -7,7 +7,8 @@ st.set_page_config(layout="wide")
 
 negoc = pd.read_excel('NEGOCIAÇÕES.xlsx',engine='openpyxl')
 hist = pd.read_excel('HISTÓRICO.xlsx',engine='openpyxl')
-
+hist['DATA HISTÓRICO'] = pd.to_datetime(df['DATA HISTÓRICO']).dt.date
+df
 
 df_hist = pd.DataFrame()
 
