@@ -13,17 +13,10 @@ df_hist = pd.DataFrame()
 
 for jogador in negoc.ID:
   
-  dic_aux = {'Atleta':negoc[negoc.ID == jogador]['ATLETA'],
-             'Posição':negoc[negoc.ID == jogador]['POSIÇÃO'],
-             'Clube':negoc[negoc.ID == jogador]['CLUBE'],
-             'Ano':negoc[negoc.ID == jogador]['ANO']}
-  
-  aux_df = pd.DataFrame(dic_aux)
-  
   hist_jog = hist[hist['ID ATLETA'] == jogador].reset_index(drop=True)
   comp = len(hist_jog)
   
-  st.title(hist_jog[hist_jog['ID ATLETA']==jogador]['Atleta'].tolist()[0])
+  st.title(hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0])
   
   t = 1
   while t <= comp:
