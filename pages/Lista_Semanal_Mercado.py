@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import openpyxl
 
+st.set_page_config(layout="wide")
+
+
 base = pd.read_excel('DESTAQUES.xlsx',engine='openpyxl')
 
 dic_classe = {'A':6,
