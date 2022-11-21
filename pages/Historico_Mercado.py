@@ -23,6 +23,8 @@ for jogador in negoc.ID:
   hist_jog = hist[hist['ID ATLETA'] == jogador].reset_index(drop=True)
   comp = len(hist_jog)
   
+  st.title(jogador)
+  
   t = 1
   while t <= comp:
     lista = [hist_jog['DESCRIÇÃO HISTÓRICO'][t-1],'','','']
@@ -30,14 +32,8 @@ for jogador in negoc.ID:
     
     st.subheader(hist_jog['DATA HISTÓRICO'][t-1])
     st.write(hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
-    
-    
+
     t+=1
 
-  df_hist = pd.concat([df_hist,aux_df])
 
 
-df_hist.to_html('df_hist.html')
-st.write(df_hist)  
-
-st.write(hist.sort_values(by=['ID ATLETA','DATA HISTÓRICO']))
