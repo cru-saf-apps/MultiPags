@@ -46,3 +46,22 @@ with col10:
 with col9meio:
   st.subheader('Segundo atacante')
   st.write(base[base.Posição==9.5])
+  
+  
+col8meio, col5, col8 = st.columns(3)
+
+with col8meio:
+  st.subheader('Médio Ofensivo')
+  st.write(base[base.Posição == 8.5])
+  
+with col5:
+  st.subheader('Médio Defensivo')
+  st.write(base[base.Posição == 5])
+  
+with col8:
+  st.subheader('Box to Box')
+  st.write(base[base.Posição == 8])
+
+
+  
+  
