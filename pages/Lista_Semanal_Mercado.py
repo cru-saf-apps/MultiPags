@@ -56,11 +56,11 @@ with col8meio:
   
 with col5:
   st.subheader('Médio Defensivo')
-  st.write(base[base.Posição == 5])
+  st.write(base[base.Posição == 5].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
   
 with col8:
   st.subheader('Box to Box')
-  st.write(base[base.Posição == 8])
+  st.write(base[base.Posição == 8].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
 
 
   
