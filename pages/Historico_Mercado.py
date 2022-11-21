@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import openpyxl
-from st_aggrid import AgGrid
 
 st.set_page_config(layout="wide")
 
@@ -32,8 +31,8 @@ for jogador in negoc.ID:
 
   df_hist = pd.concat([df_hist,aux_df])
 
-AgGrid(df_hist, height=500, fit_columns_on_grid_load=False)
 
+df_hist.to_html()
 st.write(df_hist)  
 
 st.write(hist.sort_values(by=['ID ATLETA','DATA HISTÓRICO']))
