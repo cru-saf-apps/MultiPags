@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import openpyxl
 
-st.set_page_config(layout="wide")
 
 
 negoc = pd.read_excel('NEGOCIAÇÕES.xlsx',engine='openpyxl')
