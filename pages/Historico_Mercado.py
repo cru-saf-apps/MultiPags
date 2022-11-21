@@ -32,7 +32,7 @@ for jogador in negoc.ID:
   df_hist = pd.concat([df_hist,aux_df])
 
 
-df_hist.to_html()
+df_hist.to_html('df_hist.html')
 st.write(df_hist)  
 
 st.write(hist.sort_values(by=['ID ATLETA','DATA HISTÓRICO']))
