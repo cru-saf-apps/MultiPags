@@ -18,10 +18,19 @@ for index, row in base.iterrows():
 
 base['Nota'] = (base['Projeção'] + base['ClasseNum'])/2
 
+base['Posição'] = float(base['Posição'].split(' ').strip())
 
 posicoes = [1,2,3,4,5,6,7,8,8.5,9,9.5,10,11]
 
+col1, col2, col3 = st.columns(3)
 
+with col1:
+  st.write(base[base.Posição==11])
 
+with col2:
+  st.write(base[base.Posição==9])
+
+with col3:
+  st.write(base[base.Posição==7])
 
 st.write(base)
