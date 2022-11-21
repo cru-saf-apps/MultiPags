@@ -15,7 +15,7 @@ base['ClasseNum'] = ''
 
 for index, row in base.iterrows():
   base['ClasseNum'][index] = dic_classe[base['Classe'][index]]
-  base['Posição'][index] = float(base['Posição'][index].split(' ').strip())
+  base['Posição'][index] = float(base['Posição'][index].split(' ')[0].strip())
   
 base['Nota'] = (base['Projeção'] + base['ClasseNum'])/2
 
