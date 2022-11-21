@@ -23,7 +23,7 @@ for jogador in negoc.ID:
   hist_jog = hist[hist['ID ATLETA'] == jogador].reset_index(drop=True)
   comp = len(hist_jog)
   
-  st.title(jogador)
+  st.title(hist_jog[hist_jog['ID ATLETA']==jogador]['Atleta'].tolist()[0])
   
   t = 1
   while t <= comp:
