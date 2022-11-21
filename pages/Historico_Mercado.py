@@ -27,6 +27,11 @@ for jogador in negoc.ID:
   while t <= comp:
     lista = [hist_jog['DESCRIÇÃO HISTÓRICO'][t-1],'','','']
     aux_df.loc[len(aux_df)] = lista
+    
+    st.subheader(hist_jog['DATA HISTÓRICO'][t-1])
+    st.write(hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
+    
+    
     t+=1
 
   df_hist = pd.concat([df_hist,aux_df])
