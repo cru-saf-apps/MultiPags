@@ -20,8 +20,6 @@ for jogador in negoc.ID:
   
   t = 1
   while t <= comp:
-    lista = [hist_jog['DESCRIÇÃO HISTÓRICO'][t-1],'','','']
-    aux_df.loc[len(aux_df)] = lista
     
     st.subheader(hist_jog['DATA HISTÓRICO'][t-1])
     st.write(hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
