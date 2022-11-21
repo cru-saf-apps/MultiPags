@@ -18,7 +18,7 @@ for index, row in base.iterrows():
   base['Posição'][index] = float(base['Posição'][index].split(' ')[0].strip())
   
 base['Nota'] = (base['Projeção'] + base['ClasseNum'])/2
-
+base['Nota'] = base['Nota'].astype(float)
 
 posicoes = [1,2,3,4,5,6,7,8,8.5,9,9.5,10,11]
 
