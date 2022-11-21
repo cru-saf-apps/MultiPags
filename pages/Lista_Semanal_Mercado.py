@@ -11,7 +11,10 @@ dic_classe = {'A':6,
               'E':2,
               'F':1}
 
-base['ClasseNum'] = dic_classe[base['Classe']]
+base['ClasseNum'] = ''
+
+for index, row in base.iterrows():
+  base['ClasseNum'][index] = dic_classe[base['Classe'][index]]
 
 base['Nota'] = ''
 
