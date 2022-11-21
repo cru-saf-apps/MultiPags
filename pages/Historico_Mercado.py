@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import openpyxl
+from st_aggrid import AgGrid
 
 st.set_page_config(layout="wide")
 
@@ -30,6 +31,8 @@ for jogador in negoc.ID:
     t+=1
 
   df_hist = pd.concat([df_hist,aux_df])
+
+AgGrid(df_hist, height=500, fit_columns_on_grid_load=True)
 
 st.write(df_hist)  
 
