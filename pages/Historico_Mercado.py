@@ -14,7 +14,7 @@ df_hist = pd.DataFrame()
 for jogador in negoc.ID:
   
   dic_aux = {'Atleta':negoc[negoc.ID == jogador]['ATLETA'],
-             'Posição'negoc[negoc.ID == jogador]['POSIÇÃO'],
+             'Posição':negoc[negoc.ID == jogador]['POSIÇÃO'],
              'Clube':negoc[negoc.ID == jogador]['CLUBE'],
              'Ano':negoc[negoc.ID == jogador]['ANO']}
   
