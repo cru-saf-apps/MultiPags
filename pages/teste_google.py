@@ -47,6 +47,15 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 SPREADSHEET_ID = '1UF-U9ytFUxjrjUM-SgNUWJ1u2KqJQda5O4PR3MtDQvY'
 DATA_TO_PULL = 'Sheet1'
 data = pull_sheet_data(SCOPES,SPREADSHEET_ID,DATA_TO_PULL)
-df = pd.DataFrame(data[1:], columns=data[0])
+negoc = pd.DataFrame(data[1:], columns=data[0])
 
-st.write(df)
+st.write(negoc)
+
+SPREADSHEET_ID = '1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk'
+DATA_TO_PULL = 'Sheet1'
+data = pull_sheet_data(SCOPES,SPREADSHEET_ID,DATA_TO_PULL)
+hist = pd.DataFrame(data[1:], columns=data[0])
+
+st.write(hist)
+
+
