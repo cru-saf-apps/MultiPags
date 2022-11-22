@@ -17,7 +17,7 @@ hist['DATA HISTÓRICO'] = pd.to_datetime(hist['DATA HISTÓRICO']).dt.date
 texto = ""
 pdf = FPDF()
 pdf.add_page()
-pdf.set_font('Arial','B',12)
+
 
 for jogador in negoc.ID:
   
@@ -30,6 +30,7 @@ for jogador in negoc.ID:
   texto = texto + "\n"
   texto = texto + "\n"
   
+  pdf.set_font('Arial','B',16)
   pdf.cell(40, 10, hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0],ln=1)
     
   t = 1
@@ -37,9 +38,13 @@ for jogador in negoc.ID:
     
     st.subheader(hist_jog['DATA HISTÓRICO'][t-1])
     texto = texto + str(hist_jog['DATA HISTÓRICO'][t-1]) + ": "
+    pdf.set_font('Arial','B',12)
+    pdf.cell(40, 10, str(hist_jog['DATA HISTÓRICO'][t-1]),ln=1)
     
     st.write(hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
     texto = texto + hist_jog['DESCRIÇÃO HISTÓRICO'][t-1]
+    pdf.set_font('Arial','',10)
+    pdf.cell(40, 10,hist_jog['DESCRIÇÃO HISTÓRICO'][t-1],ln=1)
     
     texto = texto + "\n"
     texto = texto + "\n"
