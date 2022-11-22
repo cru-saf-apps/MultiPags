@@ -43,7 +43,7 @@ negoc = pd.DataFrame(columns = ['PRIORIDAD',	'ID','ATLETA',	'ANO',
                                 'POSIÇÃO',	'CLUBE',	'RESPONSÁVEL CEC',
                                 'RESPONSÁVEL CLUBE',	'AGENTE',	'STATUS',	'CUSTO TOTAL'])
 for row in rows:
-    hist.loc[len(hist)] = row
+    negoc.loc[len(negoc)] = row
 
 st.write(negoc)
 
