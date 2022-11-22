@@ -38,7 +38,7 @@ for row in rows:
 negoc_url = st.secrets["private_gsheets_url"].negociacoes
 rows = run_query(f'SELECT * FROM "{negoc_url}"')
 
-negoc = pd.DataFrame(columns = ['PRIORIDAD',	'ID','ATLETA',	'ANO',
+negoc = pd.DataFrame(columns = ['PRIORIDADE',	'ID','ATLETA',	'ANO',
                                 'POSIÇÃO',	'CLUBE',	'RESPONSÁVEL CEC',
                                 'RESPONSÁVEL CLUBE',	'AGENTE',	'STATUS',	'CUSTO TOTAL'])
 for row in rows:
