@@ -29,7 +29,7 @@ for jogador in negoc.ID:
   texto = texto + hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0]
   texto = texto + "\n"
   texto = texto + "\n"
-  pdf.cell(40, 10, hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0] + "\n\n")
+  pdf.cell(40, 10, hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0],ln=1)
     
   t = 1
   while t <= comp:
