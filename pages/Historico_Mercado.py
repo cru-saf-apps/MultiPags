@@ -15,8 +15,12 @@ hist = pd.read_excel('HISTÓRICO.xlsx',engine='openpyxl')
 hist['DATA HISTÓRICO'] = pd.to_datetime(hist['DATA HISTÓRICO']).dt.date
 
 texto = ""
+pdf = FPDF()
+pdf.add_page()
+pdf.set_font('Arial', '', 10)
 
 for jogador in negoc.ID:
+  
   
   hist_jog = hist[hist['ID ATLETA'] == jogador].reset_index(drop=True)
   comp = len(hist_jog)
@@ -25,6 +29,7 @@ for jogador in negoc.ID:
   texto = texto + hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0]
   texto = texto + "\n"
   texto = texto + "\n"
+  pdf.cell(40, 10, hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0] + "\n\n")
     
   t = 1
   while t <= comp:
@@ -47,10 +52,10 @@ st.write(texto)
 export_as_pdf = st.button("Exportar")
 
 if export_as_pdf:
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font('Arial', '', 10)
-    pdf.cell(40, 10, hist)
+    
+    
+    
+    
     
     html = create_download_link(pdf.output(dest="S").encode("latin-1"), "test")
 
