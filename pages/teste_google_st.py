@@ -1,6 +1,6 @@
 import streamlit as st
 from google.oauth2 import service_account
-from ggsheets import connect
+from gsheets import connect
 
 # Create a connection object.
 credentials = service_account.Credentials.from_service_account_info(
