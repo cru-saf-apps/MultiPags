@@ -23,6 +23,8 @@ for jogador in negoc.ID:
   
   st.title(hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0])
   texto = texto + hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0]
+  texto = texto + "\n"
+  texto = texto + "\n"
     
   t = 1
   while t <= comp:
@@ -33,6 +35,7 @@ for jogador in negoc.ID:
     st.write(hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
     texto = texto + hist_jog['DESCRIÇÃO HISTÓRICO'][t-1]
     
+    texto = texto + "\n"
     texto = texto + "\n"
     t+=1
 
