@@ -3,15 +3,48 @@ import pandas as pd
 import openpyxl
 from fpdf import FPDF
 import base64
+from google.oauth2 import service_account
+from gsheetsdb import connect
 
+@st.cache(ttl=600)
+def run_query(query):
+    rows = conn.execute(query, headers=1)
+    rows = rows.fetchall()
+    return rows
 
 def create_download_link(val, filename):
     b64 = base64.b64encode(val)  # val looks like b'...'
     return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Download file</a>'
 
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"],
+    scopes=[
+        "https://www.googleapis.com/auth/spreadsheets",
+    ],
+)
 
-negoc = pd.read_excel('NEGOCIAÇÕES.xlsx',engine='openpyxl')
-hist = pd.read_excel('HISTÓRICO.xlsx',engine='openpyxl')
+conn = connect(credentials=credentials)
+
+hist_url = st.secrets["private_gsheets_url"].historico
+rows = run_query(f'SELECT * FROM "{hist_url}"')
+
+hist = pd.DataFrame(columns = ['ID ATLETA',	'ID HISTÓRICO',	'ATLETA',
+                               'POSIÇÃO',	'CLUBE',	'DATA HISTÓRICO',
+                               'DESCRIÇÃO HISTÓRICO',	'RESPONSÁVEL CEC'])
+# Print results.
+for row in rows:
+    hist.loc[len(hist)] = row
+
+negoc_url = st.secrets["private_gsheets_url"].negociacoes
+rows = run_query(f'SELECT * FROM "{negoc_url}"')
+
+negoc = pd.DataFrame(columns = ['PRIORIDAD',	'ID','ATLETA',	'ANO',
+                                'POSIÇÃO',	'CLUBE',	'RESPONSÁVEL CEC',
+                                'RESPONSÁVEL CLUBE',	'AGENTE',	'STATUS',	'CUSTO TOTAL'])
+for row in rows:
+    negoc.loc[len(negoc)] = row
+    
+    
 hist['DATA HISTÓRICO'] = pd.to_datetime(hist['DATA HISTÓRICO']).dt.date
 negoc = negoc.sort_values(by='ATLETA')
 
