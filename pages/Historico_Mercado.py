@@ -36,12 +36,12 @@ for jogador in negoc.ID:
     
     st.subheader(hist_jog['DATA HISTÓRICO'][t-1])
     texto = texto + str(hist_jog['DATA HISTÓRICO'][t-1]) + ": "
-    pdf.set_font('Arial','B',14)
+    
     pdf.cell(0, 0, str(hist_jog['DATA HISTÓRICO'][t-1]),ln=1)
     
     st.write(hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
     texto = texto + hist_jog['DESCRIÇÃO HISTÓRICO'][t-1]
-    pdf.set_font('Arial','',12)
+    
     pdf.cell(0, 0, hist_jog['DESCRIÇÃO HISTÓRICO'][t-1],ln=1)
     
     texto = texto + "\n"
