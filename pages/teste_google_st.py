@@ -23,9 +23,13 @@ def run_query(query):
 sheet_url = st.secrets["private_gsheets_url"].private_gsheets_url
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
-df = pd.DataFrame(columns = rows[0])
+hist = pd.DataFrame(columns = ['ID ATLETA',	'ID HISTÓRICO',	'ATLETA',	'POSIÇÃO',	'CLUBE',	'DATA HISTÓRICO',	'DESCRIÇÃO HISTÓRICO',	'RESPONSÁVEL CEC'])
 # Print results.
 for row in rows:
-    df.loc[len(df)] = row
+    hist.loc[len(hist)] = row
 
-st.write(df)
+st.write(hist)
+
+
+
+
