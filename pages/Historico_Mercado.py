@@ -28,7 +28,7 @@ for jogador in negoc.ID:
   while t <= comp:
     
     st.subheader(hist_jog['DATA HISTÓRICO'][t-1])
-    texto = texto + hist_jog['DATA HISTÓRICO'][t-1]
+    texto = texto + str(hist_jog['DATA HISTÓRICO'][t-1])
     
     st.write(hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
     texto = texto + hist_jog['DESCRIÇÃO HISTÓRICO'][t-1]
