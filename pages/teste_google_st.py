@@ -22,10 +22,12 @@ conn = connect(credentials=credentials)
 # Uses st.cache to only rerun when the query changes or after 10 min.
 
 
-sheet_url = st.secrets["private_gsheets_url"].private_gsheets_url
+sheet_url = st.secrets["private_gsheets_url"].historico
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
-hist = pd.DataFrame(columns = ['ID ATLETA',	'ID HISTÓRICO',	'ATLETA',	'POSIÇÃO',	'CLUBE',	'DATA HISTÓRICO',	'DESCRIÇÃO HISTÓRICO',	'RESPONSÁVEL CEC'])
+hist = pd.DataFrame(columns = ['ID ATLETA',	'ID HISTÓRICO',	'ATLETA',
+                               'POSIÇÃO',	'CLUBE',	'DATA HISTÓRICO',
+                               'DESCRIÇÃO HISTÓRICO',	'RESPONSÁVEL CEC'])
 # Print results.
 for row in rows:
     hist.loc[len(hist)] = row
@@ -33,5 +35,16 @@ for row in rows:
 st.write(hist)
 
 
+
+sheet_url = st.secrets["private_gsheets_url"].negociacoes
+rows = run_query(f'SELECT * FROM "{sheet_url}"')
+
+negoc = pd.DataFrame(columns = ['PRIORIDAD',	'ID','ATLETA',	'ANO',
+                                'POSIÇÃO',	'CLUBE',	'RESPONSÁVEL CEC',
+                                'RESPONSÁVEL CLUBE',	'AGENTE',	'STATUS',	'CUSTO TOTAL'])
+for row in rows:
+    hist.loc[len(hist)] = row
+
+st.write(negoc)
 
 
