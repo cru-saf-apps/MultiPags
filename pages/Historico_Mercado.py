@@ -13,7 +13,7 @@ def create_download_link(val, filename):
 negoc = pd.read_excel('NEGOCIAÇÕES.xlsx',engine='openpyxl')
 hist = pd.read_excel('HISTÓRICO.xlsx',engine='openpyxl')
 hist['DATA HISTÓRICO'] = pd.to_datetime(hist['DATA HISTÓRICO']).dt.date
-hist = hist.sort_values(by='ATLETA')
+negoc = negoc.sort_values(by='ATLETA')
 
 jogadores = st.multiselect('Selecione os jogadores que deseja ver o histórico:',pd.unique(negoc.ATLETA))
 
