@@ -56,23 +56,25 @@ pdf = FPDF()
 pdf.add_page()
 
 for jogador in negoc.ID:
-  
-  hist_jog = hist[hist['ID ATLETA'] == jogador].reset_index(drop=True)
-  comp = len(hist_jog)
-  
-  pdf.set_font('Arial','B',16)
-  pdf.cell(40, 10, hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0],ln=1)
-    
-  t = 1
-  while t <= comp:
-    
-    pdf.set_font('Arial','B',12)
-    pdf.cell(40, 10, str(hist_jog['DATA HISTÓRICO'][t-1]),ln=1)
+  try:
+    hist_jog = hist[hist['ID ATLETA'] == jogador].reset_index(drop=True)
+    comp = len(hist_jog)
 
-    pdf.set_font('Arial','',10)
-    pdf.multi_cell(180, 10,hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
+    pdf.set_font('Arial','B',16)
+    pdf.cell(40, 10, hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0],ln=1)
 
-    t+=1
+    t = 1
+    while t <= comp:
+
+      pdf.set_font('Arial','B',12)
+      pdf.cell(40, 10, str(hist_jog['DATA HISTÓRICO'][t-1]),ln=1)
+
+      pdf.set_font('Arial','',10)
+      pdf.multi_cell(180, 10,hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
+
+      t+=1
+  except:
+    continue
 
 export_as_pdf = st.button("Exportar")
 
