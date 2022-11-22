@@ -38,13 +38,15 @@ for jogador in negoc.ID:
 
   texto = texto + "\n"
   texto = texto + "\n"
+    
+st.write(texto)
 
 export_as_pdf = st.button("Exportar")
 
 if export_as_pdf:
     pdf = FPDF()
     pdf.add_page()
-    pdf.set_font('Arial', 'B', 16)
+    pdf.set_font('Arial', '', 10)
     pdf.cell(40, 10, texto)
     
     html = create_download_link(pdf.output(dest="S").encode("latin-1"), "test")
