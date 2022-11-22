@@ -50,7 +50,7 @@ if export_as_pdf:
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font('Arial', '', 10)
-    pdf.cell(40, 10, texto)
+    pdf.cell(40, 10, hist)
     
     html = create_download_link(pdf.output(dest="S").encode("latin-1"), "test")
 
