@@ -17,7 +17,6 @@ hist['DATA HISTÓRICO'] = pd.to_datetime(hist['DATA HISTÓRICO']).dt.date
 texto = ""
 pdf = FPDF()
 pdf.add_page()
-pdf.set_font('Arial','B',16)
 
 for jogador in negoc.ID:
   
