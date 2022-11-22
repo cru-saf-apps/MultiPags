@@ -13,11 +13,11 @@ def create_download_link(val, filename):
 negoc = pd.read_excel('NEGOCIAÇÕES.xlsx',engine='openpyxl')
 hist = pd.read_excel('HISTÓRICO.xlsx',engine='openpyxl')
 hist['DATA HISTÓRICO'] = pd.to_datetime(hist['DATA HISTÓRICO']).dt.date
+hist = hist.sort_values(by='ATLETA')
 
-texto = ""
+
 pdf = FPDF()
 pdf.add_page()
-
 
 for jogador in negoc.ID:
   
@@ -25,44 +25,22 @@ for jogador in negoc.ID:
   hist_jog = hist[hist['ID ATLETA'] == jogador].reset_index(drop=True)
   comp = len(hist_jog)
   
-  st.title(hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0])
-  texto = texto + hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0]
-  texto = texto + "\n"
-  texto = texto + "\n"
-  
   pdf.set_font('Arial','B',16)
   pdf.cell(40, 10, hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0],ln=1)
     
   t = 1
   while t <= comp:
     
-    st.subheader(hist_jog['DATA HISTÓRICO'][t-1])
-    texto = texto + str(hist_jog['DATA HISTÓRICO'][t-1]) + ": "
     pdf.set_font('Arial','B',12)
     pdf.cell(40, 10, str(hist_jog['DATA HISTÓRICO'][t-1]),ln=1)
-    
-    st.write(hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
-    texto = texto + hist_jog['DESCRIÇÃO HISTÓRICO'][t-1]
+
     pdf.set_font('Arial','',10)
     pdf.multi_cell(180, 10,hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
-    
-    texto = texto + "\n"
-    texto = texto + "\n"
-    t+=1
 
-  texto = texto + "\n"
-  texto = texto + "\n"
-    
-st.write(texto)
+    t+=1
 
 export_as_pdf = st.button("Exportar")
 
 if export_as_pdf:
-    
-    
-    
-    
-    
     html = create_download_link(pdf.output(dest="S").encode("latin-1"), "test")
-
     st.markdown(html, unsafe_allow_html=True)
