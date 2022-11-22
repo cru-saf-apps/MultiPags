@@ -27,3 +27,5 @@ df = pd.DataFrame(columns = rows[0])
 # Print results.
 for row in rows:
     df.loc[len(df)] = row
+
+st.write(df)
