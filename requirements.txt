@@ -3,3 +3,4 @@ github==1.2.7
 openpyxl==3.0.10
 fpdf==1.7.2
 google-auth-oauthlib==0.7.1
+google-api-python-client==2.66.0
