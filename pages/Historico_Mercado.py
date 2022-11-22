@@ -77,5 +77,5 @@ for jogador in negoc.ID:
 export_as_pdf = st.button("Exportar")
 
 if export_as_pdf:
-    html = create_download_link(pdf.output(dest="S").encode("latin-1"), "test")
+    html = create_download_link(pdf.output(dest="S").encode("latin-1"), "Histórico de Negociações")
     st.markdown(html, unsafe_allow_html=True)
