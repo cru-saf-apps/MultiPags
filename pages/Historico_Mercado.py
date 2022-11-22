@@ -15,12 +15,14 @@ hist = pd.read_excel('HISTÓRICO.xlsx',engine='openpyxl')
 hist['DATA HISTÓRICO'] = pd.to_datetime(hist['DATA HISTÓRICO']).dt.date
 hist = hist.sort_values(by='ATLETA')
 
+jogadores = st.multiselect('Selecione os jogadores que deseja ver o histórico:',pd.unique(negoc.ATLETA))
+
+negoc = negoc[negoc.ATLETA.isin(jogadores)]
 
 pdf = FPDF()
 pdf.add_page()
 
 for jogador in negoc.ID:
-  
   
   hist_jog = hist[hist['ID ATLETA'] == jogador].reset_index(drop=True)
   comp = len(hist_jog)
