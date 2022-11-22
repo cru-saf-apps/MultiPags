@@ -14,8 +14,7 @@ negoc = pd.read_excel('NEGOCIAÇÕES.xlsx',engine='openpyxl')
 hist = pd.read_excel('HISTÓRICO.xlsx',engine='openpyxl')
 hist['DATA HISTÓRICO'] = pd.to_datetime(hist['DATA HISTÓRICO']).dt.date
 
-
-df_hist = pd.DataFrame()
+texto = ""
 
 for jogador in negoc.ID:
   
@@ -23,22 +22,30 @@ for jogador in negoc.ID:
   comp = len(hist_jog)
   
   st.title(hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0])
-  
+  texto = texto + hist_jog[hist_jog['ID ATLETA']==jogador]['ATLETA'].tolist()[0]
+    
   t = 1
   while t <= comp:
     
     st.subheader(hist_jog['DATA HISTÓRICO'][t-1])
+    texto = texto + hist_jog['DATA HISTÓRICO'][t-1]
+    
     st.write(hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
-
+    texto = texto + hist_jog['DESCRIÇÃO HISTÓRICO'][t-1]
+    
+    texto = texto + "\n"
     t+=1
 
-export_as_pdf = st.button("Export Report")
+  texto = texto + "\n"
+  texto = texto + "\n"
+
+export_as_pdf = st.button("Exportar")
 
 if export_as_pdf:
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font('Arial', 'B', 16)
-    pdf.cell(40, 10, report_text)
+    pdf.cell(40, 10, texto)
     
     html = create_download_link(pdf.output(dest="S").encode("latin-1"), "test")
 
