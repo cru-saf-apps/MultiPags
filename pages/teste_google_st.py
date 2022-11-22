@@ -1,6 +1,6 @@
 import streamlit as st
 from google.oauth2 import service_account
-from gsheetsdb import connect
+from shillelagh.backends.apsw.db import connect
 
 # Create a connection object.
 credentials = service_account.Credentials.from_service_account_info(
@@ -19,7 +19,7 @@ def run_query(query):
     rows = rows.fetchall()
     return rows
 
-sheet_url = st.secrets["private_gsheets_url"]
+sheet_url = st.secrets["https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0"]
 rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
 # Print results.
