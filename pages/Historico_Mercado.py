@@ -6,7 +6,7 @@ import base64
 from google.oauth2 import service_account
 from gsheetsdb import connect
 
-@st.cache(ttl=600)
+@st.cache(ttl=10)
 def run_query(query):
     rows = conn.execute(query, headers=1)
     rows = rows.fetchall()
