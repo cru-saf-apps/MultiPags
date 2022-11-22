@@ -44,7 +44,7 @@ for jogador in negoc.ID:
     st.write(hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
     texto = texto + hist_jog['DESCRIÇÃO HISTÓRICO'][t-1]
     pdf.set_font('Arial','',10)
-    pdf.multi_cell(200, 10,hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
+    pdf.multi_cell(180, 10,hist_jog['DESCRIÇÃO HISTÓRICO'][t-1])
     
     texto = texto + "\n"
     texto = texto + "\n"
