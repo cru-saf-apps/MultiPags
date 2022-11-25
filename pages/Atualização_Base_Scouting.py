@@ -119,7 +119,7 @@ def busca_elencos():
     for index, row in df_clubes.iterrows():
         id_clube = df_clubes.LinkFoto[index].split('/')[-1].split('.')[0]
         clube = df_clubes.Clube[index]
-        pais_clube = df_clubes['País'][index]
+        pais_clube = df_clubes['Liga'][index]
 
         link = 'https://www.transfermarkt.com.br/se-palmeiras/kader/verein/'+id_clube+'/plus/1/galerie/0?saison_id=2021'
 
@@ -182,7 +182,7 @@ def busca_elencos():
             lista_contrato.append(contrato)
 
         elenco_clube = pd.DataFrame({'Clube':clube,
-                                     'País Clube':pais_clube,
+                                     'Liga':pais_clube,
                                      'Foto':lista_fotos,
                                      'Nome':lista_nome,
                                      'Posição':lista_pos,
@@ -198,7 +198,7 @@ def busca_elencos():
 
         df_elencos = pd.concat([df_elencos,elenco_clube])
         print(clube)
-        time.sleep(2)
+        time.sleep(1)
     
     df_elencos = df_elencos.reset_index(drop=True)
 
@@ -220,8 +220,7 @@ botao_atualizar = st.button('Atualizar Bases')
 if botao_atualizar:
 
     df_clubes = busca_clubes()
-    df_elencos = busca_elencos()
-
+    
     base_clubes_atualizada = pd.concat([base_clubes,df_clubes])
 
     base_clubes_atualizada.sort_values(by='DataAtualização',ascending=False)
@@ -232,7 +231,9 @@ if botao_atualizar:
     
     st.write('Clubes atualizados')
     
-
+    
+    df_elencos = busca_elencos()
+    
     base_elencos_atualizada = pd.concat([base_elencos,df_elencos])
 
     base_elencos_atualizada.sort_values(by='DataAtualização',ascending=False)
