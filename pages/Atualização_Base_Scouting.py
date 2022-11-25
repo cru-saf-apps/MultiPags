@@ -213,9 +213,9 @@ def busca_elencos():
 
 
 
-botao_atualizar = st.button('Atualizar Bases')
+botao_atualizar_clubes = st.button('Atualizar Clubes')
 
-if botao_atualizar:
+if botao_atualizar_clubes:
     
     with st.spinner('Buscando clubes'):
         df_clubes = busca_clubes()
@@ -234,6 +234,11 @@ if botao_atualizar:
     
     st.write('Clubes atualizados')
     
+    
+
+botao_atualizar_jogs = st.button('Atualizar Jogadores')
+
+if botao_atualizar_jogs:   
     
     with st.spinner('Buscando jogadores'):
         df_elencos = busca_elencos()
