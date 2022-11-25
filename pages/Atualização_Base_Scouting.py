@@ -72,8 +72,7 @@ def busca_clubes():
             lista_liga.append(liga)
 
         time.sleep(2)
-        st.write(liga+ano)
-
+        
 
     df_clubes = pd.DataFrame({'Clube':lista_nome,'LinkFoto':lista_foto,'Liga':lista_liga})    
 
@@ -101,19 +100,22 @@ def busca_clubes():
     
     return df_clubes
 
-df_clubes = busca_clubes()
 
-st.write(df_clubes)
+botao_atualizar = st.button('Atualizar Bases')
 
+if botao_atualizar:
 
-base_atualizada = pd.concat([base_clubes,df_clubes])
+    df_clubes = busca_clubes()
 
-base_atualizada.sort_values(by='DataAtualização',ascending=False)
+    st.write(df_clubes)
 
-base_atualizada.drop_duplicates('IDClube')
+    base_atualizada = pd.concat([base_clubes,df_clubes])
 
-   
-update_spreadsheet(spreadsheet_name,base_atualizada)
+    base_atualizada.sort_values(by='DataAtualização',ascending=False)
+
+    base_atualizada.drop_duplicates('IDClube')
+
+    update_spreadsheet(spreadsheet_name,base_atualizada)
 
 
 
