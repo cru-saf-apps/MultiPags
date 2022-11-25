@@ -234,21 +234,21 @@ if botao_atualizar:
     st.write('Clubes atualizados')
     
     
-    
-    df_elencos = busca_elencos()
-    
-    base_elencos_atualizada = pd.concat([base_elencos,df_elencos])
+    with st.spinner('Buscando elencos'):
+        df_elencos = busca_elencos()
 
-    base_elencos_atualizada = base_elencos_atualizada.sort_values(by='Data Atualização',ascending=False)
+        base_elencos_atualizada = pd.concat([base_elencos,df_elencos])
 
-    base_elencos_atualizada = base_elencos_atualizada.drop_duplicates('ID')
-    
-    spreadsheet_name = "BASE ELENCOS"
-    spread = Spread(spreadsheet_name, client = client)
-    sh = client.open(spreadsheet_name)
-    
-    update_spreadsheet(spreadsheet_name,base_elencos_atualizada)
-    
+        base_elencos_atualizada = base_elencos_atualizada.sort_values(by='Data Atualização',ascending=False)
+
+        base_elencos_atualizada = base_elencos_atualizada.drop_duplicates('ID')
+
+        spreadsheet_name = "BASE ELENCOS"
+        spread = Spread(spreadsheet_name, client = client)
+        sh = client.open(spreadsheet_name)
+
+        update_spreadsheet(spreadsheet_name,base_elencos_atualizada)
+
     st.write('Elencos atualizados')
     
     
