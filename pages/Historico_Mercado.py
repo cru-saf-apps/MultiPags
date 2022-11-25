@@ -28,7 +28,7 @@ client = Client(scope=['https://www.googleapis.com/auth/spreadsheets'],creds=cre
 
 spread = Spread('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0',client = client)
 
-sh = client.open('HISTÓRICO')
+sh = client.open('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0')
 worksheet_list = sh.worksheets()
 
 def load_the_spreadsheet(spreadsheetname):
