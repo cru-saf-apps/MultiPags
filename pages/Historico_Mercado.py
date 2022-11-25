@@ -25,7 +25,7 @@ credentials = service_account.Credentials.from_service_account_info(
 )
 
 
-conn = connect(https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0)
+conn = connect('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0')
 
 hist_url = st.secrets["private_gsheets_url"].historico
 rows = run_query(f'SELECT * FROM "{hist_url}"')
