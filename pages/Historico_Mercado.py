@@ -26,7 +26,7 @@ credentials = service_account.Credentials.from_service_account_info(
 
 client = Client(scope=['https://www.googleapis.com/auth/spreadsheets'],creds=credentials)
 
-spread = Spread('HISTÓRICO',client = client)
+spread = Spread('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0',client = client)
 
 sh = client.open('HISTÓRICO')
 worksheet_list = sh.worksheets()
