@@ -216,25 +216,26 @@ def busca_elencos():
 botao_atualizar = st.button('Atualizar Bases')
 
 if botao_atualizar:
-
-    df_clubes = busca_clubes()
     
-    base_clubes_atualizada = pd.concat([base_clubes,df_clubes])
+    with st.spinner('Buscando clubes'):
+        df_clubes = busca_clubes()
 
-    base_clubes_atualizada = base_clubes_atualizada.sort_values(by='Data Atualização',ascending=False)
+        base_clubes_atualizada = pd.concat([base_clubes,df_clubes])
 
-    base_clubes_atualizada = base_clubes_atualizada.drop_duplicates('IDClube')
-    
-    spreadsheet_name = "BASE CLUBES"
-    spread = Spread(spreadsheet_name, client = client)
-    sh = client.open(spreadsheet_name)
+        base_clubes_atualizada = base_clubes_atualizada.sort_values(by='Data Atualização',ascending=False)
 
-    update_spreadsheet(spreadsheet_name,base_clubes_atualizada)
+        base_clubes_atualizada = base_clubes_atualizada.drop_duplicates('IDClube')
+
+        spreadsheet_name = "BASE CLUBES"
+        spread = Spread(spreadsheet_name, client = client)
+        sh = client.open(spreadsheet_name)
+
+        update_spreadsheet(spreadsheet_name,base_clubes_atualizada)
     
     st.write('Clubes atualizados')
     
     
-    with st.spinner('Buscando elencos'):
+    with st.spinner('Buscando jogadores'):
         df_elencos = busca_elencos()
 
         base_elencos_atualizada = pd.concat([base_elencos,df_elencos])
