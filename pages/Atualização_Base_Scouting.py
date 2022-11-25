@@ -40,7 +40,7 @@ spread = Spread(spreadsheet_name, client = client)
 sh = client.open(spreadsheet_name)
 base_clubes = load_spreadsheet(spreadsheet_name)
 
-st.write(base_clubes)
+st.write(len(base_clubes), " clubes carregados.")
 
 def busca_clubes():
     ano = '2022'
@@ -108,7 +108,7 @@ sh = client.open(spreadsheet_name)
 base_elencos = load_spreadsheet(spreadsheet_name)
 
 
-st.write(base_elencos)
+st.write(len(base_elencos), " jogadores carregados.")
 
 def busca_elencos():
 
