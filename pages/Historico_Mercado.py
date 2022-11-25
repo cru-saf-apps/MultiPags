@@ -4,8 +4,8 @@ import openpyxl
 from fpdf import FPDF
 import base64
 from google.oauth2 import service_account
-'''from gsheetsdb import connect'''
-from shillelagh.backends.apsw.db import connect
+from gsheetsdb import connect
+
 
 @st.cache(ttl=30)
 def run_query(query):
@@ -25,7 +25,7 @@ credentials = service_account.Credentials.from_service_account_info(
 )
 
 
-conn = connect('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0')
+conn = connect(credentials = credentials)
 
 hist_url = st.secrets["private_gsheets_url"].historico
 rows = run_query(f'SELECT * FROM "{hist_url}"')
