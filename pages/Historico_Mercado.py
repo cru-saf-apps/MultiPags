@@ -5,6 +5,7 @@ from fpdf import FPDF
 import base64
 from google.oauth2 import service_account
 from gsheetsdb import connect
+from gspread_pandas import Spread,Client
 
 @st.cache(ttl=30)
 def run_query(query):
@@ -23,7 +24,25 @@ credentials = service_account.Credentials.from_service_account_info(
     ],
 )
 
-conn = connect(credentials=credentials)
+client = Client(scope=['https://www.googleapis.com/auth/spreadsheets'],creds=credentials)
+
+spread = Spread('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0',client = client)
+
+sh = client.open('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0')
+worksheet_list = sh.worksheets()
+
+def load_the_spreadsheet(spreadsheetname):
+    worksheet = sh.worksheet(spreadsheetname)
+    df = pd.DataFrame(worksheet.get_all_records())
+    return df
+
+teste = load_the_spreadsheet('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0')
+
+st.write(teste)
+
+
+
+'''conn = connect(credentials=credentials)
 
 hist_url = st.secrets["private_gsheets_url"].historico
 rows = run_query(f'SELECT * FROM "{hist_url}"')
@@ -79,4 +98,4 @@ export_as_pdf = st.button("Exportar")
 
 if export_as_pdf:
     html = create_download_link(pdf.output(dest="S").encode("latin-1"), "Histórico de Negociações")
-    st.markdown(html, unsafe_allow_html=True)
+    st.markdown(html, unsafe_allow_html=True)'''
