@@ -33,6 +33,11 @@ rows = run_query(f'SELECT * FROM "{hist_url}"')
 hist = pd.DataFrame(columns = ['ID ATLETA',	'ID HISTÓRICO',	'ATLETA',
                                'POSIÇÃO',	'CLUBE',	'DATA HISTÓRICO',
                                'DESCRIÇÃO HISTÓRICO',	'RESPONSÁVEL CEC'])
+
+
+conn.execute(f'INSERT INTO "{hist_url}" VALUES("teste","teste","teste","teste","teste","teste","teste","teste")
+            )
+
 # Print results.
 for row in rows:
     hist.loc[len(hist)] = row
