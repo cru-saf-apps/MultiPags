@@ -1,5 +1,5 @@
 import streamlit as st
-import BeautifulSoup as bs
+from bs4 import BeautifulSoup as bs
 import requests
 import pandas as pd
 from fpdf import FPDF
