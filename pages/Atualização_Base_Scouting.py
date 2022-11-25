@@ -10,7 +10,7 @@ import time
 import datetime as dt
 
 
-@st.cache(ttl=6000)
+@st.cache()
 def load_spreadsheet(spreadsheet_name):
     worksheet = sh.worksheet(spreadsheet_name)
     df = pd.DataFrame(worksheet.get_all_records())
