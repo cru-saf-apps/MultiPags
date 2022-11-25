@@ -208,7 +208,7 @@ def busca_elencos():
 
 
 
-
+st.write(base_clubes.dtypes)
 
 
 
