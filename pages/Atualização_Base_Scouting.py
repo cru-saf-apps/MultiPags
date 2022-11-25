@@ -46,7 +46,7 @@ def busca_clubes():
     ano = '2022'
 
     ligas = ['BRA1','BRA2','BRA3','BRA4','MEXA','AR1N','URU1','CLPD','COLP',
-             'PR1A','VZ1L','PER1','BO1C']
+             'PR1A','VZ1L','PER1','BO1C','GB1']
 
     lista_nome = []
     lista_foto = []
@@ -79,7 +79,8 @@ def busca_clubes():
     dic_pais = {'BRA1':'Brasil Série A','BRA2':'Brasil Série B','AR1N':'Argentina 1ª Div','URU1':'Uruguai 1ª Div',
                 'CLPD':'Chile 1ª Div','COLP':'Colombia 1ª Div','BRA3':'Brasil Série C','MEXA':'Mexico 1ª Div',
                 'BRA4':'Brasil Série D','PR1A':'Paraguai 1ª Div','VZ1L':'Venezuela 1ª Div',
-                'PER1':'Peru 1ª Div','BO1C':'Bolivia 1ª Div'}
+                'PER1':'Peru 1ª Div','BO1C':'Bolivia 1ª Div',
+                'GB1':'Inglaterra Premier League'}
 
     for index, row in df_clubes.iterrows():
         df_clubes.Liga[index] = dic_pais[df_clubes.Liga[index]]
@@ -227,9 +228,8 @@ if botao_atualizar:
     spreadsheet_name = "BASE CLUBES"
     spread = Spread(spreadsheet_name, client = client)
     sh = client.open(spreadsheet_name)
-    base_elencos = load_spreadsheet(spreadsheet_name)
 
-    update_spreadsheet('BASE CLUBES',base_clubes_atualizada)
+    update_spreadsheet(spreadsheet_name,base_clubes_atualizada)
     
     st.write('Clubes atualizados')
     
@@ -246,9 +246,8 @@ if botao_atualizar:
     spreadsheet_name = "BASE ELENCOS"
     spread = Spread(spreadsheet_name, client = client)
     sh = client.open(spreadsheet_name)
-    base_elencos = load_spreadsheet(spreadsheet_name)
     
-    update_spreadsheet('BASE ELENCOS',base_elencos_atualizada)
+    update_spreadsheet(spreadsheet_name,base_elencos_atualizada)
     
     st.write('Elencos atualizados')
     
