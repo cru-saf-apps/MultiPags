@@ -4,7 +4,8 @@ import openpyxl
 from fpdf import FPDF
 import base64
 from google.oauth2 import service_account
-from gsheetsdb import connect
+'''from gsheetsdb import connect'''
+from shillelagh.backends.apsw.db import connect
 
 @st.cache(ttl=30)
 def run_query(query):
