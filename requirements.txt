@@ -5,3 +5,4 @@ fpdf==1.7.2
 google-auth-oauthlib==0.7.1
 google-api-python-client==2.66.0
 gsheetsdb==0.1.13.1
+gspread_pandas==3.2.2
