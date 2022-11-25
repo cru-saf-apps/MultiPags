@@ -114,10 +114,10 @@ def busca_elencos():
 
     df_elencos = pd.DataFrame()
 
-    for index, row in df_clubes.iterrows():
-        id_clube = df_clubes.LinkFoto[index].split('/')[-1].split('.')[0]
-        clube = df_clubes.Clube[index]
-        pais_clube = df_clubes['Liga'][index]
+    for index, row in base_clubes.iterrows():
+        id_clube = base_clubes.LinkFoto[index].split('/')[-1].split('.')[0]
+        clube = base_clubes.Clube[index]
+        pais_clube = base_clubes['Liga'][index]
 
         link = 'https://www.transfermarkt.com.br/se-palmeiras/kader/verein/'+id_clube+'/plus/1/galerie/0?saison_id=2021'
 
@@ -233,7 +233,10 @@ if botao_atualizar_clubes:
         update_spreadsheet(spreadsheet_name,base_clubes_atualizada)
     
     st.write('Clubes atualizados')
-     
+
+botao_atualizar_jogs = st.button('Atualizar Jogadores')
+
+if botao_atualizar_jogs:
     
     with st.spinner('Buscando jogadores'):
         df_elencos = busca_elencos()
