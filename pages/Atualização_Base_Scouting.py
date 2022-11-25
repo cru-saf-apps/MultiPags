@@ -102,6 +102,7 @@ def busca_clubes():
     
     return df_clubes
 
+
 spreadsheet_name = "BASE ELENCOS"
 spread = Spread(spreadsheet_name, client = client)
 sh = client.open(spreadsheet_name)
@@ -110,23 +111,136 @@ base_elencos = load_spreadsheet(spreadsheet_name)
 
 st.write(base_elencos)
 
+@st.cache()
+def busca_elencos():
+
+    df_elencos = pd.DataFrame()
+
+    for index, row in df_clubes.iterrows():
+        id_clube = df_clubes.LinkFoto[index].split('/')[-1].split('.')[0]
+        clube = df_clubes.Clube[index]
+        pais_clube = df_clubes['País'][index]
+
+        link = 'https://www.transfermarkt.com.br/se-palmeiras/kader/verein/'+id_clube+'/plus/1/galerie/0?saison_id=2021'
+
+        page = requests.get(link, headers=headers)
+
+        soup = bs(page.content,'html.parser')
+
+        elenco = soup.find('table',{'class':'items'})
+
+        if elenco is None:
+            continue
+
+        tabelas_inline = elenco.find_all('table',{'class':'inline-table'})
+
+        lista_pag = []
+        lista_nome = []
+        lista_pos = []
+        lista_fotos = []
+        for tabela in tabelas_inline:
+            tds = tabela.find_all('td')
+
+            foto = tds[0].find('img').get('data-src')
+            lista_fotos.append(foto)
+
+            nome = tds[1].text.strip()
+            lista_nome.append(nome)
+
+            pag = 'www.transfermarkt.com.br'+tds[1].find('a').get('href')
+            lista_pag.append(pag)
+
+            pos = tds[2].text.strip()
+            lista_pos.append(pos)
+
+
+        linhas = elenco.find_all('tr')[1:]
+        lista_ranges = list(range(0,len(linhas),3))
+
+        lista_datanasc = []
+        lista_paisnasc = []
+        lista_altura = []
+        lista_pe = []
+        lista_contrato = []
+
+        for valor in lista_ranges:
+            tds = linhas[valor].find_all('td')
+
+            data_nasc = tds[5].text.split('(')[0].strip()
+            pais_nasc = tds[6].find('img').get('title')
+            try:
+                altura = int(tds[7].text.split('m')[0].replace(',',''))
+            except:
+                altura = '-'
+            pe = tds[8].text
+            contrato = tds[11].text
+
+            lista_datanasc.append(data_nasc)
+            lista_paisnasc.append(pais_nasc)
+            lista_altura.append(altura)
+            lista_pe.append(pe)
+            lista_contrato.append(contrato)
+
+        elenco_clube = pd.DataFrame({'Clube':clube,
+                                     'País Clube':pais_clube,
+                                     'Foto':lista_fotos,
+                                     'Nome':lista_nome,
+                                     'Posição':lista_pos,
+                                     'Data Nascimento':lista_datanasc,
+                                     'Nacionalidade':lista_paisnasc,
+                                     'Altura':lista_altura,
+                                     'Pé':lista_pe,
+                                     'Contrato':lista_contrato,
+                                     'Link Transfermarkt':lista_pag,
+                                     'Data Atualização':dt.date.today().strftime("%d/%m/%Y")
+        } 
+        )
+
+        df_elencos = pd.concat([df_elencos,elenco_clube])
+        print(clube)
+        time.sleep(2)
+    
+    df_elencos = df_elencos.reset_index(drop=True)
+
+    df_elencos['ID'] = df_elencos['Link Transfermarkt'].split('/')[4]
+    
+    return df_elencos
+
+
+
+
+
+
+
 
 botao_atualizar = st.button('Atualizar Bases')
 
 if botao_atualizar:
 
     df_clubes = busca_clubes()
+    df_elencos = busca_elencos()
 
-    st.write(df_clubes)
+    base_clubes_atualizada = pd.concat([base_clubes,df_clubes])
 
-    base_atualizada = pd.concat([base_clubes,df_clubes])
+    base_clubes_atualizada.sort_values(by='DataAtualização',ascending=False)
 
-    base_atualizada.sort_values(by='DataAtualização',ascending=False)
+    base_clubes_atualizada.drop_duplicates('IDClube')
 
-    base_atualizada.drop_duplicates('IDClube')
+    update_spreadsheet('BASE CLUBES',base_clubes_atualizada)
+    
+    
+    
+    
+    
+    base_elencos_atualizada = pd.concat([base_elencos,df_elencos])
 
-    update_spreadsheet(spreadsheet_name,base_atualizada)
+    base_elencos_atualizada.sort_values(by='DataAtualização',ascending=False)
 
+    base_elencos_atualizada.drop_duplicates('IDClube')
+    
+    update_spreadsheet('BASE ELENCOS',base_elencos_atualizada)
+    
+    
 
 
 
