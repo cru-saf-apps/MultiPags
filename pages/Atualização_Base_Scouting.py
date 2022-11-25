@@ -225,12 +225,14 @@ if botao_atualizar_clubes:
         base_clubes_atualizada = base_clubes_atualizada.sort_values(by='Data Atualização',ascending=False)
 
         base_clubes_atualizada = base_clubes_atualizada.drop_duplicates('IDClube',keep='first')
+        
+        st.write(base_clubes_atualizada)
 
-        spreadsheet_name = "BASE CLUBES"
+        '''spreadsheet_name = "BASE CLUBES"
         spread = Spread(spreadsheet_name, client = client)
         sh = client.open(spreadsheet_name)
 
-        update_spreadsheet(spreadsheet_name,base_clubes_atualizada)
+        update_spreadsheet(spreadsheet_name,base_clubes_atualizada)'''
     
     st.write('Clubes atualizados')
 
