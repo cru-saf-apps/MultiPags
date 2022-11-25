@@ -35,7 +35,7 @@ hist = pd.DataFrame(columns = ['ID ATLETA',	'ID HISTÓRICO',	'ATLETA',
                                'DESCRIÇÃO HISTÓRICO',	'RESPONSÁVEL CEC'])
 
 
-conn.execute(f'INSERT INTO "{hist_url}" VALUES("teste","teste","teste","teste","teste","teste","teste","teste")
+conn.execute(f'INSERT INTO "{hist_url}" VALUES("teste","teste","teste","teste","teste","teste","teste","teste")'
             )
 
 # Print results.
