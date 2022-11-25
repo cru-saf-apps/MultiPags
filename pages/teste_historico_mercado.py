@@ -33,13 +33,16 @@ spread = Spread(spreadsheet_name, client = client)
 st.write(spread.url)
 
 
-hist_url = st.secrets["private_gsheets_url"].historico
-rows = run_query(f'SELECT * FROM "{hist_url}"')
+sh = client.open(spreadsheet_name)
 
-hist = pd.DataFrame(columns = ['ID ATLETA',	'ID HISTÓRICO',	'ATLETA',
-                               'POSIÇÃO',	'CLUBE',	'DATA HISTÓRICO',
-                               'DESCRIÇÃO HISTÓRICO',	'RESPONSÁVEL CEC'])
+def load_spreadsheet(spreadsheet_name):
+    worksheet = sh.worksheet(spreadsheet_name)
+    df = pd.DataFrame(worksheet.get_all_records())
+    return df
 
+hist = load_spreadsheet(spreadsheet_name)
+
+st.write(hist)
 
 
 # Print results.
