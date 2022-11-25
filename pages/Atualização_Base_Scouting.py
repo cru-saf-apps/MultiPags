@@ -223,10 +223,16 @@ if botao_atualizar:
     base_clubes_atualizada.sort_values(by='DataAtualização',ascending=False)
 
     base_clubes_atualizada.drop_duplicates('IDClube')
+    
+    spreadsheet_name = "BASE CLUBES"
+    spread = Spread(spreadsheet_name, client = client)
+    sh = client.open(spreadsheet_name)
+    base_elencos = load_spreadsheet(spreadsheet_name)
 
     update_spreadsheet('BASE CLUBES',base_clubes_atualizada)
     
     st.write('Clubes atualizados')
+    
     
     
     df_elencos = busca_elencos()
@@ -236,6 +242,11 @@ if botao_atualizar:
     base_elencos_atualizada.sort_values(by='DataAtualização',ascending=False)
 
     base_elencos_atualizada.drop_duplicates('ID')
+    
+    spreadsheet_name = "BASE ELENCOS"
+    spread = Spread(spreadsheet_name, client = client)
+    sh = client.open(spreadsheet_name)
+    base_elencos = load_spreadsheet(spreadsheet_name)
     
     update_spreadsheet('BASE ELENCOS',base_elencos_atualizada)
     
