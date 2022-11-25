@@ -42,20 +42,21 @@ def load_spreadsheet(spreadsheet_name):
 
 hist = load_spreadsheet(spreadsheet_name)
 
+
+
+hist.loc[len(hist)] = ['teste','teste','teste','teste','teste','teste','teste','teste']
 st.write(hist)
+             
+def update_spreadsheet(spreadsheet_name, df):
+    spread.df_to_sheet(df,sheet = spreadsheet_name,index=False,replace=True)
+   
+update_spreadsheet(spreadsheet_name,hist)
 
 
-# Print results.
-for row in rows:
-    hist.loc[len(hist)] = row
 
-negoc_url = st.secrets["private_gsheets_url"].negociacoes
-rows = run_query(f'SELECT * FROM "{negoc_url}"')
 
-negoc = pd.DataFrame(columns = [	'ID','ATLETA',	'ANO','CLASSE',
-                                'POSIÇÃO',	'CLUBE','AGENTE','STATUS'])
-for row in rows:
-    negoc.loc[len(negoc)] = row
+
+
     
     
 hist['DATA HISTÓRICO'] = pd.to_datetime(hist['DATA HISTÓRICO']).dt.date
