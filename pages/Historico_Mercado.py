@@ -32,6 +32,7 @@ st.write(spread)
 
 sh = client.open('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0')
 worksheet_list = sh.worksheets()
+st.write(worksheet_list)
 
 def load_the_spreadsheet(spreadsheetname):
     worksheet = sh.worksheet(spreadsheetname)
