@@ -42,7 +42,6 @@ base_clubes = load_spreadsheet(spreadsheet_name)
 
 st.write(base_clubes)
 
-@st.cache
 def busca_clubes():
     ano = '2022'
 
@@ -110,7 +109,6 @@ base_elencos = load_spreadsheet(spreadsheet_name)
 
 st.write(base_elencos)
 
-@st.cache()
 def busca_elencos():
 
     df_elencos = pd.DataFrame()
