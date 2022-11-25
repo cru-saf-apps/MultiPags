@@ -95,7 +95,7 @@ def busca_clubes():
     for index, row in df_clubes.iterrows():
         df_clubes.IDClube[index] = df_clubes.LinkFoto[index].split('/')[-1].split('.')[0]
 
-    df_clubes = df_clubes.assign('Data Atualização' = dt.date.today().strftime("%d/%m/%Y"))
+    df_clubes = df_clubes.assign(Data Atualização = dt.date.today().strftime("%d/%m/%Y"))
 
     df_clubes = df_clubes.drop_duplicates('IDClube').reset_index(drop=True)
     
