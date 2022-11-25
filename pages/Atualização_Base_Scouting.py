@@ -95,7 +95,7 @@ def busca_clubes():
     for index, row in df_clubes.iterrows():
         df_clubes.IDClube[index] = df_clubes.LinkFoto[index].split('/')[-1].split('.')[0]
 
-    df_clubes = df_clubes.assign(DataAtualização = dt.date.today().strftime("%d/%m/%Y"))
+    df_clubes = df_clubes.assign('Data Atualização' = dt.date.today().strftime("%d/%m/%Y"))
 
     df_clubes = df_clubes.drop_duplicates('IDClube').reset_index(drop=True)
     
@@ -221,7 +221,7 @@ if botao_atualizar:
     
     base_clubes_atualizada = pd.concat([base_clubes,df_clubes])
 
-    base_clubes_atualizada = base_clubes_atualizada.sort_values(by='DataAtualização',ascending=False)
+    base_clubes_atualizada = base_clubes_atualizada.sort_values(by='Data Atualização',ascending=False)
 
     base_clubes_atualizada = base_clubes_atualizada.drop_duplicates('IDClube')
     
