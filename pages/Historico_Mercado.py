@@ -26,9 +26,9 @@ credentials = service_account.Credentials.from_service_account_info(
 
 client = Client(scope=['https://www.googleapis.com/auth/spreadsheets'],creds=credentials)
 
-spread = Spread('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0',client = client)
+spread = Spread('HISTÓRICO',client = client)
 
-sh = client.open('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0')
+sh = client.open('HISTÓRICO')
 worksheet_list = sh.worksheets()
 
 def load_the_spreadsheet(spreadsheetname):
@@ -36,7 +36,7 @@ def load_the_spreadsheet(spreadsheetname):
     df = pd.DataFrame(worksheet.get_all_records())
     return df
 
-teste = load_the_spreadsheet('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0')
+teste = load_the_spreadsheet('HISTÓRICO')
 
 st.write(teste)
 
