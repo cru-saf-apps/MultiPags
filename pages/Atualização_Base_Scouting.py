@@ -224,7 +224,7 @@ if botao_atualizar:
 
         base_clubes_atualizada = base_clubes_atualizada.sort_values(by='Data Atualização',ascending=False)
 
-        base_clubes_atualizada = base_clubes_atualizada.drop_duplicates('IDClube')
+        base_clubes_atualizada = base_clubes_atualizada.drop_duplicates('IDClube',keep='first')
 
         spreadsheet_name = "BASE CLUBES"
         spread = Spread(spreadsheet_name, client = client)
@@ -242,7 +242,7 @@ if botao_atualizar:
 
         base_elencos_atualizada = base_elencos_atualizada.sort_values(by='Data Atualização',ascending=False)
 
-        base_elencos_atualizada = base_elencos_atualizada.drop_duplicates('ID')
+        base_elencos_atualizada = base_elencos_atualizada.drop_duplicates('ID',keep='first')
 
         spreadsheet_name = "BASE ELENCOS"
         spread = Spread(spreadsheet_name, client = client)
