@@ -202,7 +202,9 @@ def busca_elencos():
     
     df_elencos = df_elencos.reset_index(drop=True)
 
-    df_elencos['ID'] = df_elencos['Link Transfermarkt'].split('/')[4]
+    df_elencos['ID'] = ''
+    for index, row in df_elencos.iterrows():
+        df_elencos['ID'][index] = df_elencos['Link Transfermarkt'][index].split('/')[4]
     
     return df_elencos
 
@@ -228,17 +230,18 @@ if botao_atualizar:
 
     update_spreadsheet('BASE CLUBES',base_clubes_atualizada)
     
+    st.write('Clubes atualizados')
     
-    
-    
-    
+
     base_elencos_atualizada = pd.concat([base_elencos,df_elencos])
 
     base_elencos_atualizada.sort_values(by='DataAtualização',ascending=False)
 
-    base_elencos_atualizada.drop_duplicates('IDClube')
+    base_elencos_atualizada.drop_duplicates('ID')
     
     update_spreadsheet('BASE ELENCOS',base_elencos_atualizada)
+    
+    st.write('Elencos atualizados')
     
     
 
