@@ -20,33 +20,12 @@ def create_download_link(val, filename):
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"],
     scopes=[
-        "https://spreadsheets.google.com/feeds",
-        "https://www.googleapis.com/auth/drive"
+        "https://www.googleapis.com/auth/spreadsheets"
     ]
 )
 
-client = Client(scope=['https://www.googleapis.com/auth/spreadsheets'],creds=credentials)
-st.write(client)
 
-spread = Spread('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0',client = client)
-st.write(spread)
-
-sh = client.open('HISTÓRICO')
-worksheet_list = sh.worksheets()
-st.write(worksheet_list)
-
-def load_the_spreadsheet(spreadsheetname):
-    worksheet = sh.worksheet(spreadsheetname)
-    df = pd.DataFrame(worksheet.get_all_records())
-    return df
-
-teste = load_the_spreadsheet('HISTÓRICO')
-
-st.write(teste)
-
-
-
-'''conn = connect(credentials=credentials)
+conn = connect(credentials=credentials)
 
 hist_url = st.secrets["private_gsheets_url"].historico
 rows = run_query(f'SELECT * FROM "{hist_url}"')
@@ -102,4 +81,4 @@ export_as_pdf = st.button("Exportar")
 
 if export_as_pdf:
     html = create_download_link(pdf.output(dest="S").encode("latin-1"), "Histórico de Negociações")
-    st.markdown(html, unsafe_allow_html=True)'''
+    st.markdown(html, unsafe_allow_html=True)
