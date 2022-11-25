@@ -16,15 +16,22 @@ def create_download_link(val, filename):
     b64 = base64.b64encode(val)  # val looks like b'...'
     return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Download file</a>'
 
+scope = ['https://spreadsheets.google.com/feeds',
+         'https://www.googleapis.com/auth/drive']
+
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"],
-    scopes=[
-        "https://www.googleapis.com/auth/spreadsheets"
-    ]
+    scopes=scope
 )
 
+client = Client(scope = scope, creds = credentials)
 
-conn = connect(credentials = credentials)
+spreadsheet_name = "HISTÓRICO"
+
+spread = Spread(spreadsheet_name, client = client)
+
+st.write(spread.url)
+
 
 hist_url = st.secrets["private_gsheets_url"].historico
 rows = run_query(f'SELECT * FROM "{hist_url}"')
