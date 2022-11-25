@@ -239,7 +239,7 @@ if botao_atualizar:
     
     base_elencos_atualizada = pd.concat([base_elencos,df_elencos])
 
-    base_elencos_atualizada = base_elencos_atualizada.sort_values(by='DataAtualização',ascending=False)
+    base_elencos_atualizada = base_elencos_atualizada.sort_values(by='Data Atualização',ascending=False)
 
     base_elencos_atualizada = base_elencos_atualizada.drop_duplicates('ID')
     
