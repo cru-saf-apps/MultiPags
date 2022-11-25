@@ -195,7 +195,7 @@ def busca_elencos():
         )
 
         df_elencos = pd.concat([df_elencos,elenco_clube])
-        print(clube)
+        
         time.sleep(1)
     
     df_elencos = df_elencos.reset_index(drop=True)
