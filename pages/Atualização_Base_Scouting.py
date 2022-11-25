@@ -100,6 +100,14 @@ def busca_clubes():
     
     return df_clubes
 
+spreadsheet_name = "BASE ELENCOS"
+spread = Spread(spreadsheet_name, client = client)
+sh = client.open(spreadsheet_name)
+base_elencos = load_spreadsheet(spreadsheet_name)
+
+st.write(base_clubes)
+st.write(base_elencos)
+
 
 botao_atualizar = st.button('Atualizar Bases')
 
