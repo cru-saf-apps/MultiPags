@@ -30,7 +30,7 @@ st.write(client)
 spread = Spread('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0',client = client)
 st.write(spread)
 
-sh = client.open('https://docs.google.com/spreadsheets/d/1fcF3RkUoI7ArLqL65gBypydisCfVbkVcibcZYYWzWvk/edit#gid=0')
+sh = client.open('HISTÓRICO')
 worksheet_list = sh.worksheets()
 st.write(worksheet_list)
 
