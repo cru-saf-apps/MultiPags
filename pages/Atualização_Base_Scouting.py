@@ -224,7 +224,7 @@ if botao_atualizar_clubes:
 
         base_clubes_atualizada = base_clubes_atualizada.sort_values(by='Data Atualização',ascending=False)
 
-        base_clubes_atualizada = base_clubes_atualizada.drop_duplicates('IDClube',keep='first')
+        base_clubes_atualizada.drop_duplicates(subset=['IDClube'],keep='first',inplace=True)
         
         st.write(base_clubes_atualizada)
 
