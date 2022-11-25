@@ -233,12 +233,7 @@ if botao_atualizar_clubes:
         update_spreadsheet(spreadsheet_name,base_clubes_atualizada)
     
     st.write('Clubes atualizados')
-    
-    
-
-botao_atualizar_jogs = st.button('Atualizar Jogadores')
-
-if botao_atualizar_jogs:   
+     
     
     with st.spinner('Buscando jogadores'):
         df_elencos = busca_elencos()
