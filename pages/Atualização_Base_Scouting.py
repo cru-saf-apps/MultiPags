@@ -41,6 +41,8 @@ spread = Spread(spreadsheet_name, client = client)
 sh = client.open(spreadsheet_name)
 base_clubes = load_spreadsheet(spreadsheet_name)
 
+st.write(base_clubes)
+
 @st.cache
 def busca_clubes():
     ano = '2022'
@@ -105,7 +107,7 @@ spread = Spread(spreadsheet_name, client = client)
 sh = client.open(spreadsheet_name)
 base_elencos = load_spreadsheet(spreadsheet_name)
 
-st.write(base_clubes)
+
 st.write(base_elencos)
 
 
