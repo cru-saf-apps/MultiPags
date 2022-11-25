@@ -5,7 +5,6 @@ from fpdf import FPDF
 import base64
 from google.oauth2 import service_account
 from gsheetsdb import connect
-from gspread_pandas import Spread,Client
 
 @st.cache(ttl=30)
 def run_query(query):
