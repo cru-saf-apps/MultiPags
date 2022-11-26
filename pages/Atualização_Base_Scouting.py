@@ -207,6 +207,9 @@ def busca_elencos():
     return df_elencos
 
 
+base_clubes['Clube'] = base_clubes['Clube'].astype('str')
+base_clubes['LinkFoto'] = base_clubes['LinkFoto'].astype('str')
+base_clubes['Liga'] = base_clubes['Liga'].astype('str')
 base_clubes['Data Atualização'] = base_clubes['Data Atualização'].astype('str')
 
 st.write(base_clubes.dtypes)
