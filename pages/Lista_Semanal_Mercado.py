@@ -107,6 +107,10 @@ with col6:
 
 with col3:
   st.subheader('Zag. Esquerdo')
+  st.markdown(
+    base[base.Posição == 'Zagueiro'][['Foto','Nome','Clube']].to_html(escape=False, formatters=dict(Foto=path_to_image_html)),
+    unsafe_allow_html=True,
+  )
   st.write(base[base.Posição == 'Zagueiro'][['Foto','Nome','Clube']])
   
 with col4:
