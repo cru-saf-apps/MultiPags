@@ -112,11 +112,15 @@ with col4:
 with col2:
   st.subheader('Lat. Direito')
   st.table(base[base.Posição == 2][['Nome','Clube','Data de Nascimento']])
-    
 
-st.markdown(
-    base[base.Posição == 'Goleiro'][['Foto','Nome','Clube']].to_html(escape=False, formatters=dict(Foto=path_to_image_html)),
-    unsafe_allow_html=True,
-  )
+colnada1, colgol, colnada2 = st.columns(3)
+  
+    
+with colgol:
+    st.subheader('Goleiro')
+    st.markdown(
+        base[base.Posição == 'Goleiro'][['Foto','Nome','Clube']].to_html(escape=False, formatters=dict(Foto=path_to_image_html)),
+        unsafe_allow_html=True,
+      )
   
   
