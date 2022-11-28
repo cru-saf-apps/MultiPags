@@ -98,7 +98,7 @@ with col6:
 
 with col3:
   st.subheader('Zag. Esquerdo')
-  st.table(base[base.Posição == 3][['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição == 'Zagueiro'][['Foto','Nome','Clube']])
   
 with col4:
   st.subheader('Zag. Direito')
