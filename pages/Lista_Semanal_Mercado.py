@@ -33,6 +33,8 @@ base['Imagem'] = base.apply( lambda x: show_image_from_url(x['Foto']), axis = 1 
 
 base.to_html()
 
+st.write(base)
+
 dic_classe = {'A':6,
               'B':5,
               'C':4,
