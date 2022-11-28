@@ -26,7 +26,7 @@ spread = Spread(spreadsheet_name, client = client)
 sh = client.open(spreadsheet_name)
 base = load_spreadsheet(spreadsheet_name)
 
-base['Imagem'] = df.apply( lambda x: show_image_from_url(x['Foto']), axis = 1 )
+base['Imagem'] = base.apply( lambda x: show_image_from_url(x['Foto']), axis = 1 )
 
 dic_classe = {'A':6,
               'B':5,
