@@ -28,8 +28,10 @@ base = load_spreadsheet(spreadsheet_name)
 
 
 def show_image_from_url(image_url):
-    return(f’’)
+    return(f’’image_url)
 base['Imagem'] = base.apply( lambda x: show_image_from_url(x['Foto']), axis = 1 )
+
+base.to_html()
 
 dic_classe = {'A':6,
               'B':5,
