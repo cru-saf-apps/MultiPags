@@ -26,6 +26,7 @@ spread = Spread(spreadsheet_name, client = client)
 sh = client.open(spreadsheet_name)
 base = load_spreadsheet(spreadsheet_name)
 
+base['Imagem'] = df.apply( lambda x: show_image_from_url(x['Foto']), axis = 1 )
 
 dic_classe = {'A':6,
               'B':5,
@@ -33,8 +34,6 @@ dic_classe = {'A':6,
               'D':3,
               'E':2,
               'F':1}
-
-base['ClasseNum'] = ''
 
 posicoes = [1,2,3,4,5,6,7,8,8.5,9,9.5,10,11]
 
@@ -98,7 +97,7 @@ with col6:
 
 with col3:
   st.subheader('Zag. Esquerdo')
-  st.table(base[base.Posição == 'Zagueiro'][['Foto','Nome','Clube']])
+  st.table(base[base.Posição == 'Zagueiro'][['Imagem','Nome','Clube']])
   
 with col4:
   st.subheader('Zag. Direito')
