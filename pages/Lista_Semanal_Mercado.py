@@ -27,11 +27,14 @@ sh = client.open(spreadsheet_name)
 base = load_spreadsheet(spreadsheet_name)
 
 
-def show_image_from_url(image_url):
-    return(f'')
-base['Imagem'] = base.apply(lambda x: show_image_from_url(x['Foto']), axis = 1)
+def path_to_image_html(path):
+    return '<img src="' + path + '" width="60" >'
 
-base.to_html()
+st.markdown(
+    base.to_html(escape=False, formatters=dict(Foto=path_to_image_html)),
+    unsafe_allow_html=True,
+)
+
 
 st.write(base)
 
