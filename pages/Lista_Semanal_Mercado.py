@@ -54,59 +54,59 @@ col11, col9, col7 = st.columns(3)
 
 with col11:
   st.subheader('Ext. Esquerdo')
-  st.table(base[base.Posição==11].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição==11][['Nome','Clube','Data de Nascimento']])
 
 with col9:
   st.subheader('Centroavante')
-  st.table(base[base.Posição==9].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição==9][['Nome','Clube','Data de Nascimento']])
 
 with col7:
   st.subheader('Ext. Direito')
-  st.table(base[base.Posição==7].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição==7][['Nome','Clube','Data de Nascimento']])
 
   
 col10, col9meio = st.columns(2)
 
 with col10:
   st.subheader('Meia')
-  st.table(base[base.Posição == 10].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição == 10][['Nome','Clube','Data de Nascimento']])
   
 with col9meio:
   st.subheader('Segundo atacante')
-  st.table(base[base.Posição==9.5].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição==9.5][['Nome','Clube','Data de Nascimento']])
   
   
 col8meio, col5, col8 = st.columns(3)
 
 with col8meio:
   st.subheader('Médio Ofensivo')
-  st.table(base[base.Posição == 8.5].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição == 8.5][['Nome','Clube','Data de Nascimento']])
   
 with col5:
   st.subheader('Médio Defensivo')
-  st.table(base[base.Posição == 5].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição == 5][['Nome','Clube','Data de Nascimento']])
   
 with col8:
   st.subheader('Box to Box')
-  st.table(base[base.Posição == 8].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição == 8][['Nome','Clube','Data de Nascimento']])
 
 col6, col3, col4, col2 = st.columns(4)
 
 with col6:
   st.subheader('Lat. Esquerdo')
-  st.table(base[base.Posição == 6].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição == 6][['Nome','Clube','Data de Nascimento']])
 
 with col3:
   st.subheader('Zag. Esquerdo')
-  st.table(base[base.Posição == 3].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição == 3][['Nome','Clube','Data de Nascimento']])
   
 with col4:
   st.subheader('Zag. Direito')
-  st.table(base[base.Posição == 4].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição == 4][['Nome','Clube','Data de Nascimento']])
   
 with col2:
   st.subheader('Lat. Direito')
-  st.table(base[base.Posição == 2].nlargest(10,'Nota')[['Nome','Clube','Data de Nascimento']])
+  st.table(base[base.Posição == 2][['Nome','Clube','Data de Nascimento']])
   
   
   
