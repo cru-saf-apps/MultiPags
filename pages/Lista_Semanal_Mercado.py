@@ -30,13 +30,6 @@ base = load_spreadsheet(spreadsheet_name)
 def path_to_image_html(path):
     return '<img src="' + path + '" width="60" >'
 
-st.markdown(
-    base.to_html(escape=False, formatters=dict(Foto=path_to_image_html)),
-    unsafe_allow_html=True,
-)
-
-
-st.write(base)
 
 dic_classe = {'A':6,
               'B':5,
@@ -111,8 +104,7 @@ with col3:
     base[base.Posição == 'Zagueiro'][['Foto','Nome','Clube']].to_html(escape=False, formatters=dict(Foto=path_to_image_html)),
     unsafe_allow_html=True,
   )
-  st.write(base[base.Posição == 'Zagueiro'][['Foto','Nome','Clube']])
-  
+    
 with col4:
   st.subheader('Zag. Direito')
   st.table(base[base.Posição == 4][['Nome','Clube','Data de Nascimento']])
