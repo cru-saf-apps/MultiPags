@@ -9,7 +9,6 @@ from google.oauth2 import service_account
 import time
 import datetime as dt
 
-encoding = 'latin-1'
 
 def load_spreadsheet(spreadsheet_name):
     worksheet = sh.worksheet(spreadsheet_name)
@@ -210,7 +209,7 @@ def busca_elencos():
 
 base_clubes['Clube'] = base_clubes['Clube'].astype('str')
 
-st.write(base_clubes.dtypes)
+st.write(base_clubes)
 
 botao_atualizar_clubes = st.button('Atualizar Clubes')
 
