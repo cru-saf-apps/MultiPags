@@ -63,13 +63,13 @@ def busca_clubes():
         nomes = soup.find_all('td',{'class':'no-border-links hauptlink'})
 
         for nome in nomes:
-            lista_nome.append(nome.find('a').text)
+            lista_nome.append(str(nome.find('a').text))
 
-            id_clube = nome.find('a').get('href').split('/')[4]
+            id_clube = str(nome.find('a').get('href').split('/')[4])
 
-            lista_foto.append('https://tmssl.akamaized.net/images/wappen/head/'+id_clube+'.png')
+            lista_foto.append(str('https://tmssl.akamaized.net/images/wappen/head/'+id_clube+'.png'))
 
-            lista_liga.append(liga)
+            lista_liga.append(str(liga))
 
         time.sleep(2)
         
@@ -83,7 +83,7 @@ def busca_clubes():
                 'GB1':'Inglaterra Premier League'}
 
     for index, row in df_clubes.iterrows():
-        df_clubes.Liga[index] = dic_pais[df_clubes.Liga[index]]
+        df_clubes.Liga[index] = str(dic_pais[df_clubes.Liga[index]])
 
     for index, row in df_clubes.iterrows():
         if df_clubes.LinkFoto[index].split('/')[-1].split('.')[0].isdigit():
@@ -93,9 +93,9 @@ def busca_clubes():
 
     df_clubes['IDClube'] = ''
     for index, row in df_clubes.iterrows():
-        df_clubes.IDClube[index] = df_clubes.LinkFoto[index].split('/')[-1].split('.')[0]
+        df_clubes.IDClube[index] = str(df_clubes.LinkFoto[index].split('/')[-1].split('.')[0])
 
-    df_clubes['Data Atualização'] = dt.date.today().strftime("%d/%m/%Y")
+    df_clubes['Data Atualização'] = str(dt.date.today().strftime("%d/%m/%Y"))
 
     df_clubes = df_clubes.drop_duplicates('IDClube').reset_index(drop=True)
     
@@ -139,16 +139,16 @@ def busca_elencos():
         for tabela in tabelas_inline:
             tds = tabela.find_all('td')
 
-            foto = tds[0].find('img').get('data-src')
+            foto = str(tds[0].find('img').get('data-src'))
             lista_fotos.append(foto)
 
-            nome = tds[1].text.strip()
+            nome = str(tds[1].text.strip())
             lista_nome.append(nome)
 
-            pag = 'www.transfermarkt.com.br'+tds[1].find('a').get('href')
+            pag = str('www.transfermarkt.com.br'+tds[1].find('a').get('href'))
             lista_pag.append(pag)
 
-            pos = tds[2].text.strip()
+            pos = str(tds[2].text.strip())
             lista_pos.append(pos)
 
 
@@ -164,14 +164,14 @@ def busca_elencos():
         for valor in lista_ranges:
             tds = linhas[valor].find_all('td')
 
-            data_nasc = tds[5].text.split('(')[0].strip()
-            pais_nasc = tds[6].find('img').get('title')
+            data_nasc = str(tds[5].text.split('(')[0].strip())
+            pais_nasc = str(tds[6].find('img').get('title'))
             try:
-                altura = int(tds[7].text.split('m')[0].replace(',',''))
+                altura = str(int(tds[7].text.split('m')[0].replace(',','')))
             except:
                 altura = '-'
-            pe = tds[8].text
-            contrato = tds[11].text
+            pe = str(tds[8].text)
+            contrato = str(tds[11].text)
 
             lista_datanasc.append(data_nasc)
             lista_paisnasc.append(pais_nasc)
@@ -207,15 +207,7 @@ def busca_elencos():
     return df_elencos
 
 
-base_clubes['Clube'] = base_clubes['Clube'].astype('str')
-base_clubes['LinkFoto'] = base_clubes['LinkFoto'].astype('str')
-base_clubes['Liga'] = base_clubes['Liga'].astype('str')
-base_clubes['Data Atualização'] = base_clubes['Data Atualização'].astype('str')
-
 st.write(base_clubes.dtypes)
-
-
-
 
 botao_atualizar_clubes = st.button('Atualizar Clubes')
 
