@@ -9,6 +9,7 @@ from google.oauth2 import service_account
 import time
 import datetime as dt
 
+encoding = 'latin-1'
 
 def load_spreadsheet(spreadsheet_name):
     worksheet = sh.worksheet(spreadsheet_name)
