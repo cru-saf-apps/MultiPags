@@ -224,11 +224,11 @@ if botao_atualizar_clubes:
         
         st.write(base_clubes_atualizada)
 
-        '''spreadsheet_name = "BASE CLUBES"
+        spreadsheet_name = "BASE CLUBES"
         spread = Spread(spreadsheet_name, client = client)
         sh = client.open(spreadsheet_name)
 
-        update_spreadsheet(spreadsheet_name,base_clubes_atualizada)'''
+        update_spreadsheet(spreadsheet_name,base_clubes_atualizada)
     
     st.write('Clubes atualizados')
 
