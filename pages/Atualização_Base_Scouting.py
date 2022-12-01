@@ -256,6 +256,8 @@ if botao_atualizar_jogs:
         spreadsheet_name = "BASE ELENCOS"
         spread = Spread(spreadsheet_name, client = client)
         sh = client.open(spreadsheet_name)
+        
+        st.write(base_elencos_atualizada)
 
         update_spreadsheet(spreadsheet_name,base_elencos_atualizada)
 
