@@ -93,11 +93,13 @@ def busca_clubes():
 
     df_clubes['IDClube'] = ''
     for index, row in df_clubes.iterrows():
-        df_clubes.IDClube[index] = str(df_clubes.LinkFoto[index].split('/')[-1].split('.')[0])
+        df_clubes.IDClube[index] = df_clubes.LinkFoto[index].split('/')[-1].split('.')[0]
 
     df_clubes['Data Atualização'] = str(dt.date.today().strftime("%d/%m/%Y"))
 
     df_clubes = df_clubes.drop_duplicates('IDClube').reset_index(drop=True)
+    
+    df_clubes = df_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'string'})
     
     return df_clubes
 
