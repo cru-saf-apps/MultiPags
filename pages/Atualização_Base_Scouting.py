@@ -206,7 +206,7 @@ def busca_elencos():
     for index, row in df_elencos.iterrows():
         df_elencos['ID'][index] = df_elencos['Link Transfermarkt'][index].split('/')[4]
         
-    df_elencos = df_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'datetime64[ns]','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'datetime64[ns]','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
+    df_elencos = df_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'string','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'string','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
     
     return df_elencos
 
