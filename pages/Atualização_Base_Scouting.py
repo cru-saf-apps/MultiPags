@@ -99,7 +99,7 @@ def busca_clubes():
 
     df_clubes = df_clubes.drop_duplicates('IDClube').reset_index(drop=True)
     
-    df_clubes = df_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
+    df_clubes = df_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','IDClube':'int64','Data Atualização':'datetime64[ns]'})
     
     return df_clubes
 
