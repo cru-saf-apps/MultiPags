@@ -216,7 +216,6 @@ def busca_elencos():
 
 
 base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
-
 base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string',
                                           'Nome':'string','Posição':'string',
                                           'Data Nascimento':'datetime64[ns]','Nacionalidade':'string',
