@@ -238,8 +238,6 @@ if botao_atualizar_clubes:
 
         base_clubes_atualizada.drop_duplicates(subset=['IDClube'],keep='first',inplace=True)
         
-        st.write(base_clubes_atualizada)
-
         spreadsheet_name = "BASE CLUBES"
         spread = Spread(spreadsheet_name, client = client)
         sh = client.open(spreadsheet_name)
@@ -257,9 +255,9 @@ if botao_atualizar_jogs:
 
         base_elencos_atualizada = pd.concat([base_elencos,df_elencos])
 
-        base_elencos_atualizada = base_elencos_atualizada.sort_values(by='Data Atualização',ascending=False)
+        base_elencos_atualizada = base_elencos_atualizada.sort_values(by='Data Atualização',ascending=True)
 
-        base_elencos_atualizada = base_elencos_atualizada.drop_duplicates('ID',keep='first')
+        base_elencos_atualizada = base_elencos_atualizada.drop_duplicates('ID',keep='first',inplace=True)
 
         spreadsheet_name = "BASE ELENCOS"
         spread = Spread(spreadsheet_name, client = client)
