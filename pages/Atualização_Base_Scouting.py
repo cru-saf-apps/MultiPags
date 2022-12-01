@@ -224,7 +224,7 @@ if botao_atualizar_clubes:
 
         base_clubes_atualizada = pd.concat([base_clubes,df_clubes])
 
-        base_clubes_atualizada = base_clubes_atualizada.sort_values(by='Data Atualização',ascending=False)
+        base_clubes_atualizada = base_clubes_atualizada.sort_values(by='Data Atualização',ascending=True)
 
         base_clubes_atualizada.drop_duplicates(subset=['IDClube'],keep='first',inplace=True)
         
