@@ -207,22 +207,11 @@ def busca_elencos():
     return df_elencos
 
 
-lista1 = []
-lista2 = []
-lista3 = []
-lista4 = []
-for index, row in base_clubes.iterrows():
-    lista1.append(type(base_clubes['Clube'][index]))
-    lista2.append(type(base_clubes['LinkFoto'][index]))
-    lista3.append(type(base_clubes['Liga'][index]))
-    lista4.append(type(base_clubes['Data Atualização'][index]))
-    
-df_tipos = pd.DataFrame({'Clube':lista1,'LinkFoto':lista2,'Liga':lista3,'Data Atualização':lista4})  
+base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'string'})
 
-st.write(df_tipos)
+st.write(base_clubes.dtypes)
                   
-    
-st.write(base_clubes)
+
 
 botao_atualizar_clubes = st.button('Atualizar Clubes')
 
