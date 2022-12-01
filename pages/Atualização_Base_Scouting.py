@@ -205,15 +205,25 @@ def busca_elencos():
     df_elencos['ID'] = ''
     for index, row in df_elencos.iterrows():
         df_elencos['ID'][index] = df_elencos['Link Transfermarkt'][index].split('/')[4]
+        
+    df_elencos = df_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string',
+                                          'Nome':'string','Posição':'string',
+                                          'Data Nascimento':'datetime64[ns]','Nacionalidade':'string',
+                                          'Altura':'string','Pé':'string','Contrato':'datetime64[ns]',
+                                          'Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
     
     return df_elencos
 
 
 base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
 
-st.write(base_clubes.dtypes)
-                  
+base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string',
+                                          'Nome':'string','Posição':'string',
+                                          'Data Nascimento':'datetime64[ns]','Nacionalidade':'string',
+                                          'Altura':'string','Pé':'string','Contrato':'datetime64[ns]',
+                                          'Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
 
+st.write(base_clubes.dtypes)                 
 
 botao_atualizar_clubes = st.button('Atualizar Clubes')
 
