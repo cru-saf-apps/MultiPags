@@ -212,7 +212,7 @@ def busca_elencos():
 
 try:
     base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
-    base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'datetime64[ns]','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'datetime64[ns]','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
+    base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'string','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'string','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
 
 except:
     st.write('Clubes ou elencos vazios')
