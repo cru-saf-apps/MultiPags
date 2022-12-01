@@ -210,10 +210,13 @@ def busca_elencos():
     
     return df_elencos
 
+try:
+    base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
+    base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'datetime64[ns]','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'datetime64[ns]','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
 
-base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
-base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'datetime64[ns]','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'datetime64[ns]','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
-
+except:
+    st.write('Clubes ou elencos vazios')
+    
 st.write(base_clubes.dtypes)                 
 
 botao_atualizar_clubes = st.button('Atualizar Clubes')
