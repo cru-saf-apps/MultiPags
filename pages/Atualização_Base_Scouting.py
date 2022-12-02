@@ -212,8 +212,10 @@ def busca_elencos():
     
     return df_elencos
 
-base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
-base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'string','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'string','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
+if base_clubes.empty == False:
+    base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
+if base_elencos.empty == False:
+    base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'string','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'string','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
     
 st.write(base_clubes.dtypes)                 
 
