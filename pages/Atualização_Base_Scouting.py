@@ -41,6 +41,7 @@ sh = client.open(spreadsheet_name)
 base_clubes = load_spreadsheet(spreadsheet_name)
 
 st.write(len(base_clubes), " clubes carregados.")
+st.write(base_clubes)
 
 def busca_clubes():
     ano = '2022'
