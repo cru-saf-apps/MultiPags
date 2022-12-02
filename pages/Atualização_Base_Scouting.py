@@ -245,6 +245,8 @@ botao_atualizar_jogs = st.button('Atualizar Jogadores')
 
 if botao_atualizar_jogs:
     
+    st.write(base_clubes)
+    
     with st.spinner('Buscando jogadores'):
         df_elencos = busca_elencos()
 
