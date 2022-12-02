@@ -269,11 +269,14 @@ if botao_atualizar_jogs:
     with st.spinner('Buscando jogadores'):
         df_elencos = busca_elencos()
 
-        base_elencos_atualizada = pd.concat([base_elencos,df_elencos])
+        if base_elencos.empty:
+            base_elencos_atualizada = df_elencos
+        else:
+            base_elencos_atualizada = pd.concat([base_elencos,df_elencos])
 
-        base_elencos_atualizada = base_elencos_atualizada.sort_values(by='Data Atualização',ascending=True)
+            base_elencos_atualizada = base_elencos_atualizada.sort_values(by='Data Atualização',ascending=True)
 
-        base_elencos_atualizada = base_elencos_atualizada.drop_duplicates('ID',keep='first',inplace=True)
+            base_elencos_atualizada = base_elencos_atualizada.drop_duplicates('ID',keep='first',inplace=True)
 
         spreadsheet_name = "BASE ELENCOS"
         spread = Spread(spreadsheet_name, client = client)
