@@ -207,7 +207,7 @@ def busca_elencos():
             lista_contrato.append(contrato)
 
         elenco_clube = pd.DataFrame({'Clube':clube,
-                                     'IDClube':id_clube
+                                     'IDClube':id_clube,
                                      'Liga':pais_clube,
                                      'Foto':lista_fotos,
                                      'Nome':lista_nome,
