@@ -109,6 +109,8 @@ spread = Spread(spreadsheet_name, client = client)
 sh = client.open(spreadsheet_name)
 base_elencos = load_spreadsheet(spreadsheet_name)
 
+st.write(base_elencos)
+
 
 st.write(len(base_elencos), " jogadores carregados.")
 
@@ -210,13 +212,8 @@ def busca_elencos():
     
     return df_elencos
 
-try:
-    base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
-    base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'string','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'string','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
-
-except:
-    base_clubes = pd.DataFrame(columns=['Clube','LinkFoto','Liga','IDClube','Data Atualização'])
-    base_elencos = pd.DataFrame(columns=['Clube','IDClube','Liga','Foto','Nome','Posição','Data Nascimento','Nacionalidade','Altura','Pé','Contrato','Link Transfermarkt','Data Atualização','ID'])
+base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
+base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'string','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'string','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
     
 st.write(base_clubes.dtypes)                 
 
@@ -244,8 +241,6 @@ if botao_atualizar_clubes:
 botao_atualizar_jogs = st.button('Atualizar Jogadores')
 
 if botao_atualizar_jogs:
-    
-    st.write(base_clubes)
     
     with st.spinner('Buscando jogadores'):
         df_elencos = busca_elencos()
