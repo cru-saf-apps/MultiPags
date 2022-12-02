@@ -40,6 +40,13 @@ spread = Spread(spreadsheet_name, client = client)
 sh = client.open(spreadsheet_name)
 base_clubes = load_spreadsheet(spreadsheet_name)
 
+if base_clubes.empty:
+    base_clubes = pd.DataFrame(columns = ['Clube',
+                                           'LinkFoto',
+                                           'Liga',
+                                           'IDClube',
+                                           'Data Atualização'])
+
 st.write(len(base_clubes), " clubes carregados.")
 st.write(base_clubes)
 
@@ -110,10 +117,25 @@ spread = Spread(spreadsheet_name, client = client)
 sh = client.open(spreadsheet_name)
 base_elencos = load_spreadsheet(spreadsheet_name)
 
-st.write(base_elencos)
+if base_elencos.empty:
+    base_elencos = pd.DataFrame(columns = ['Clube',
+                                           'IDClube',
+                                           'Liga',
+                                           'Foto',
+                                           'Nome',
+                                           'Posição',
+                                           'Data Nascimento',
+                                           'Nacionalidade',
+                                           'Altura',
+                                           'Pé',
+                                           'Contrato',
+                                           'Link Transfermarkt',
+                                           'Data Atualização',
+                                           'ID'])
 
 
 st.write(len(base_elencos), " jogadores carregados.")
+st.write(base_elencos)
 
 def busca_elencos():
 
@@ -217,8 +239,7 @@ if base_clubes.empty == False:
     base_clubes = base_clubes.astype(dtype={'Clube': 'string','LinkFoto':'string','Liga':'string','Data Atualização':'datetime64[ns]'})
 if base_elencos.empty == False:
     base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'string','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'string','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
-    
-st.write(base_clubes.dtypes)                 
+                    
 
 botao_atualizar_clubes = st.button('Atualizar Clubes')
 
