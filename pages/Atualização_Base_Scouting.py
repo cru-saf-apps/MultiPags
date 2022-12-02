@@ -114,7 +114,7 @@ st.write(len(base_elencos), " jogadores carregados.")
 
 def busca_elencos():
 
-    df_elencos = pd.DataFrame(columns=['Clube','IDClube','Liga','Foto','Nome','Posição','Data Nascimento','Nacionalidade','Altura','Pé','Contrato','Link Transfermarkt','Data Atualização','ID'])
+    df_elencos = pd.DataFrame()
 
     for index, row in base_clubes.iterrows():
         id_clube = base_clubes.LinkFoto[index].split('/')[-1].split('.')[0]
