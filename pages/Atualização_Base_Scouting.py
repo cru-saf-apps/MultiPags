@@ -215,7 +215,8 @@ try:
     base_elencos = base_elencos.astype(dtype={'Clube':'string','Liga':'string','Foto':'string','Nome':'string','Posição':'string','Data Nascimento':'string','Nacionalidade':'string','Altura':'string','Pé':'string','Contrato':'string','Link Transfermarkt':'string','Data Atualização':'datetime64[ns]'})
 
 except:
-    st.write('Clubes ou elencos vazios')
+    base_clubes = pd.DataFrame(columns=['Clube','LinkFoto','Liga','IDClube','Data Atualização'])
+    base_elencos = pd.DataFrame(columns=['Clube','IDClube','Liga','Foto','Nome','Posição','Data Nascimento','Nacionalidade','Altura','Pé','Contrato','Link Transfermarkt','Data Atualização','ID'])
     
 st.write(base_clubes.dtypes)                 
 
