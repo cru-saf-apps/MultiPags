@@ -15,7 +15,7 @@ def update_spreadsheet(spreadsheet_name, df):
     spread.df_to_sheet(df,sheet = spreadsheet_name,index=False,replace=True)
     
 def parseStrToDt(df,coluna, format):
-    for index, row in dfcoluna.iterrows():
+    for index, row in df.iterrows():
         if df[coluna][index] != '-':
             df[coluna][index] = pd.to_datetime(df[coluna][index],format = format)
     
