@@ -15,6 +15,13 @@ def load_spreadsheet(spreadsheet_name):
 
 def update_spreadsheet(spreadsheet_name, df):
     spread.df_to_sheet(df,sheet = spreadsheet_name,index=False,replace=True)
+    
+def parseStrToDt(df,coluna, format):
+    for index, row in df.iterrows():
+        try:
+            df[coluna][index] = pd.to_datetime(df[coluna][index],format = format)
+        except:
+            continue
 
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
@@ -277,6 +284,9 @@ if botao_atualizar_jogs:
         spreadsheet_name = "BASE ELENCOS"
         spread = Spread(spreadsheet_name, client = client)
         sh = client.open(spreadsheet_name)
+  
+        parseStrToDt(df = base_elencos_atualizada,coluna = 'Data Nascimento',format = '%d/%m/%Y')
+        parseStrToDt(df = base_elencos_atualizada,coluna = 'Contrato',format = '%d/%m/%Y')
         
         st.write(base_elencos_atualizada)
 
