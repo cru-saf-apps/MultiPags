@@ -34,7 +34,7 @@ sh = client.open(spreadsheet_name)
 base_elencos = load_spreadsheet(spreadsheet_name)
 
 
-base_elencos['Data Nascimento'] = pd.to_datetime(base_elencos['Data Nascimento'],errors='ignore',format='%d/%m/%Y',infer_datetime_format=True)
+base_elencos['Data Nascimento'] = base_elencos['Data Nascimento'].astype('datetime64[s]')
 
 
 update_spreadsheet(spreadsheet_name,base_elencos)
