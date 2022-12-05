@@ -14,8 +14,10 @@ def load_spreadsheet(spreadsheet_name):
 def update_spreadsheet(spreadsheet_name, df):
     spread.df_to_sheet(df,sheet = spreadsheet_name,index=False,replace=True)
     
-def parseStrToDt(s, format = '%m/%d/%Y'):
-    return pd.NaT if s=='-' else datetime.strptime(s, format)
+def parseStrToDt(df,coluna, format):
+    for index, row in dfcoluna.iterrows():
+        if df[coluna][index] != '-':
+            df[coluna][index] = pd.to_datetime(df[coluna][index],format = format)
     
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
@@ -37,7 +39,7 @@ sh = client.open(spreadsheet_name)
 base_elencos = load_spreadsheet(spreadsheet_name)
 
 
-parseStrToDt(base_elencos['Data Nascimento'],format = '%d/%m/%Y')
+parseStrToDt(df = base_elencos,coluna = 'Data Nascimento',format = '%d/%m/%Y')
 
 
 update_spreadsheet(spreadsheet_name,base_elencos)
