@@ -42,6 +42,7 @@ base_elencos = load_spreadsheet(spreadsheet_name)
 
 
 parseStrToDt(df = base_elencos,coluna = 'Data Nascimento',format = '%d/%m/%Y')
+parseStrToDt(df = base_elencos,coluna = 'Contrato',format = '%d/%m/%Y')
 
 
 update_spreadsheet(spreadsheet_name,base_elencos)
