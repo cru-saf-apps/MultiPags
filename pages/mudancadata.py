@@ -16,8 +16,10 @@ def update_spreadsheet(spreadsheet_name, df):
     
 def parseStrToDt(df,coluna, format):
     for index, row in df.iterrows():
-        if df[coluna][index] != '-':
+        try:
             df[coluna][index] = pd.to_datetime(df[coluna][index],format = format)
+        except:
+            continue
     
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
